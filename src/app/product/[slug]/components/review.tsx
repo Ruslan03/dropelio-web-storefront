@@ -45,7 +45,7 @@ const Review = ({ reviews }: IReview) => {
                      </div>
                   </div>
                   <div className='w-full h-32'>
-                  <p className='text-sm italic line-clamp-6 text-wrap' title={review.review}>{review.review}</p>
+                     <p className='text-sm italic line-clamp-6 text-wrap' title={review.review}>{review.review}</p>
                      {/* <Image
                      src={baseUrl(`storage/${review.product_image}`)}
                      alt='review-img'

@@ -19,7 +19,7 @@ interface IImageSlider {
 }
 
 const ImageSlider: React.FC<IImageSlider> = ({ images }) => {
-   
+
    return (
       <Slider {...defaultConfig}>
          {(images || []).map((img, i) => <SlideImage key={i} src={baseUrl(`storage/${img.image_path}`)} />)}
