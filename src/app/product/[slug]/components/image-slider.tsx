@@ -32,9 +32,7 @@ const SlideImage = ({ src }: { src: string }) => {
    return (
       <div className={`w-full aspect-square relative`}>
          {isLoading && (
-            <div className='w-full h-full bg-gray-200 animate-pulse'>
-
-            </div>
+            <div className='w-full h-full bg-gray-200 animate-pulse' />
          )}
          <Image
             src={src}
