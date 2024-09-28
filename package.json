@@ -12,8 +12,12 @@
       "lint": "next lint"
    },
    "dependencies": {
+      "@nextui-org/input": "^2.2.5",
+      "@nextui-org/system": "^2.2.6",
+      "@nextui-org/theme": "^2.2.11",
       "autoprefixer": "^10.4.20",
       "cssnano": "^7.0.6",
+      "framer-motion": "^11.9.0",
       "html-react-parser": "^5.1.15",
       "next": "14.2.5",
       "postcss": "^8.4.45",
