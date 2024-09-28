@@ -9,8 +9,14 @@ import Price from './components/price'
 import BannerCOD from './components/banner-cod'
 import Features from './components/features'
 import Review from './components/review'
-import CheckoutForm from './components/checkout-form'
+// import CheckoutForm from './components/checkout-form'
 import ButtonCheckout from './components/button-checkout'
+import dynamic from 'next/dynamic'
+
+const CheckoutForm = dynamic(() => import('./components/checkout-form'), {
+   ssr: false,
+   loading: () => <p>Loading checkout form...</p>
+})
 
 interface Props {
    params: {
