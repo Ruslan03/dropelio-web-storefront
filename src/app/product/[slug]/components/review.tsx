@@ -27,7 +27,7 @@ const Review = ({ reviews }: IReview) => {
    return (
       <div className='my-4'>
          <h2 className='font-semibold text-base mb-3'>Customers Review</h2>
-         <Slider {...defaultConfig} slidesToShow={2} arrows={true} autoplay className='-mr-2 md:-mr-4'>
+         <Slider {...defaultConfig} slidesToShow={2} autoplay className='-mr-2 md:-mr-4'>
             {(reviews || []).map((review, i) => (
                <div key={i} className='text-center'>
                   <div className='flex flex-col gap-1 items-center mr-2 md:mr-4 p-4 bg-gray-50 rounded-md'>
