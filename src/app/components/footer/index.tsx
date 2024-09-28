@@ -7,7 +7,7 @@ interface BaseFooter {
 const BaseFooter: React.FC<BaseFooter> = () => {
    return (
       <div className='flex flex-col items-center  py-4'>
-         <p>Powered By</p>
+         <p className='text-sm'>Powered By</p>
          <Image
             src={'/dropelio-logo.png'}
             alt='logo'
