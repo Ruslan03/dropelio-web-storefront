@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { baseUrl } from "./base-path";
 
 export const getBaseApiURL = () => {
