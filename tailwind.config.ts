@@ -1,13 +1,11 @@
 import type { Config } from "tailwindcss";
-import { nextui } from "@nextui-org/theme";
 
 const config: Config = {
     darkMode: ["class"],
     content: [
       "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
       "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-      "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-      './node_modules/@nextui-org/theme/dist/components/(button|snippet|code|input).js'
+      "./src/app/**/*.{js,ts,jsx,tsx,mdx}"
    ],
    theme: {
    	extend: {
@@ -64,6 +62,6 @@ const config: Config = {
    		}
    	}
    },
-   plugins: [nextui(), require("tailwindcss-animate")],
+   plugins: [require("tailwindcss-animate")],
 };
 export default config;
