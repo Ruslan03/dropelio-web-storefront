@@ -22,8 +22,8 @@ export const getProduct = async ({ slug }: { slug: string }) => {
          const json = await res.json();
          return json?.payload || null
       }
-
-      notFound()
+      
+      return null
 
    } catch (err) {
       throw err

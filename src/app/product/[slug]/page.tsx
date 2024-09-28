@@ -12,6 +12,7 @@ import Review from './components/review'
 // import CheckoutForm from './components/checkout-form'
 import ButtonCheckout from './components/button-checkout'
 import dynamic from 'next/dynamic'
+import { notFound } from 'next/navigation'
 
 const CheckoutForm = dynamic(() => import('./components/checkout-form'), {
    ssr: false,
@@ -30,6 +31,11 @@ export async function generateMetadata({ params }: Props) {
 
    const product = await getProduct({ slug })
 
+   
+   if(!product) {
+      notFound()
+   }
+
    return {
       title: product.title,
    }
@@ -41,6 +47,8 @@ const Page = async ({ params }: Props) => {
    const { slug } = params
 
    const product = await getProduct({ slug })
+
+   
 
    const {
       id,
