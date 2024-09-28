@@ -9,6 +9,8 @@ import Price from './components/price'
 import BannerCOD from './components/banner-cod'
 import Features from './components/features'
 import Review from './components/review'
+import CheckoutForm from './components/checkout-form'
+import ButtonCheckout from './components/button-checkout'
 
 interface Props {
    params: {
@@ -63,12 +65,16 @@ const Page = async ({ params }: Props) => {
 
             <Features features={product_features} />
 
+            <CheckoutForm />
+
             <div>
                <Description productID={id} />
             </div>
 
-            <Review reviews={product_reviews} />
+            {product_reviews?.length > 0 && (<Review reviews={product_reviews} />)}
          </div>
+
+         <ButtonCheckout />
 
          <BaseFooter />
 
