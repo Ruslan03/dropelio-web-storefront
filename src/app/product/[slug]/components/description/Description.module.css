@@ -1,0 +1,35 @@
+.description {
+   @apply min-h-96;
+}
+
+.description h1 {
+   @apply text-2xl;
+}
+
+.description h2 {
+   @apply text-xl;
+}
+
+.description a {
+   @apply text-blue-800;
+}
+
+.description pre {
+   @apply bg-gray-800 p-2 rounded-md text-white font-mono;
+}
+
+.description ul {
+   list-style: disc !important;
+}
+
+.description ul li {
+   @apply list-inside;
+}
+
+.description ol {
+   list-style: decimal !important;
+}
+
+.description ol li {
+   @apply list-inside;
+}

@@ -15,12 +15,26 @@ export const getProduct = async ({ slug }: { slug: string }) => {
    
    try {
       const baseUrl = getBaseApiURL()
-      const res = await fetch(`${baseUrl}/storefront/product/${slug}?time=${Date.now()}`, { next: { revalidate: 0 } });
+      const res = await fetch(`${baseUrl}/storefront/product/${slug}`, { next: { revalidate: 0 } });
       const json = await res.json();
 
       return json?.payload || null
    } catch (err) {
       
       return []
+   }
+}
+
+export const getDescription = async ({ productID }: { productID: string }) => {
+   
+   try {
+      const baseUrl = getBaseApiURL()
+      const res = await fetch(`${baseUrl}/storefront/product/${productID}/description`, { next: { revalidate: 0 } });
+      const content = await res.text();
+
+      return content 
+   } catch (err) {
+      
+      return ''
    }
 }

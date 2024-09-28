@@ -3,25 +3,36 @@
 import React, { useEffect, useState } from 'react'
 import parse from "html-react-parser";
 import Image from 'next/image';
+import { getDescription } from '@/app/lib/services';
 
-async function getDescription() {
-   const description = await fetch(`https://test.dropelio.xyz/api/v1/storefront/product/32/description`).then((res) => res.text());
-   return description
+import styles from './Description.module.css'
+
+const REPLACE_CLASS: any = {
+   'ql-align-center': 'text-center',
+   'ql-font-serif': 'font-serif',
+   'ql-font-monospace': 'font-mono',
+   'ql-indent-1': 'indent-1',
+
 }
 
-
-const Description = () => {
+const Description = ({ productID }: { productID: string }) => {
    const [description, setDescription] = useState<any>([])
 
    useEffect(() => {
-      getDescription().then((res) => {
-
+      getDescription({ productID }).then((res) => {
          function transformNode(node: any) {
+
+            const className = node?.attribs?.class as string
+            if(Object.keys(REPLACE_CLASS).indexOf(className) > -1) {
+               const newNode = Object.assign({}, node)
+               newNode!.attribs!.class = REPLACE_CLASS[className]
+               return newNode
+            }
 
             if (node.type === "tag" && node.name === "p" && node.children?.[0].name === "img") {
                const image = node.children?.[0]
                return (
-                  <div className='min-h-screen w-full h-auto bg-gray-100'>
+                  <div className='w-full'>
                      <Image
                         src={image.attribs.src}
                         alt='image-product'
@@ -38,6 +49,7 @@ const Description = () => {
                   </div>
                )
             }
+
          }
 
          const options = {
@@ -51,7 +63,7 @@ const Description = () => {
    }, [])
 
    return (
-      <div className='min-h-screen'>
+      <div className={styles.description}>
          {description.map((element: any, i: number) => {
             return <div key={i}>{element}</div>;
          })}

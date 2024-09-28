@@ -35,6 +35,7 @@ const Page = async ({ params }: Props) => {
    const product = await getProduct({ slug })
 
    const {
+      id,
       title,
       sold,
       product_currency,
@@ -63,7 +64,7 @@ const Page = async ({ params }: Props) => {
             <Features features={product_features} />
 
             <div>
-               <Description />
+               <Description productID={id} />
             </div>
 
             <Review reviews={product_reviews} />
