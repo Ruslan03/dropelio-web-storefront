@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { baseUrl } from "./base-path";
 
 export const getBaseApiURL = () => {
@@ -16,12 +17,16 @@ export const getProduct = async ({ slug }: { slug: string }) => {
    try {
       const baseUrl = getBaseApiURL()
       const res = await fetch(`${baseUrl}/storefront/product/${slug}`, { next: { revalidate: 0 } });
-      const json = await res.json();
-
-      return json?.payload || null
-   } catch (err) {
       
-      return []
+      if(res.status === 200) {
+         const json = await res.json();
+         return json?.payload || null
+      }
+
+      notFound()
+
+   } catch (err) {
+      throw err
    }
 }
 
