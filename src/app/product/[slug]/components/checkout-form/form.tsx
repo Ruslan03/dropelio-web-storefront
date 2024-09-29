@@ -9,7 +9,7 @@ const RecipientForm = () => {
       <div className='mt-4'>
          <h3 className='font-semibold mb-2'>Recipient Form</h3>
          <div className='flex w-full flex-col gap-3 '>
-            <Input className='bg-white' type='text' placeholder="Email" />
+            <Input className='bg-white' type='text' placeholder="Your name" />
 
             <Input className='bg-white' placeholder="Your whatsapp number" />
             <Input className='bg-white' placeholder="City" />

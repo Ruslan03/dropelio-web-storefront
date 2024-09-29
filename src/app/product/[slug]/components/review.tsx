@@ -29,7 +29,7 @@ const Review = ({ reviews }: IReview) => {
          <Slider {...defaultConfig} slidesToShow={2} autoplay className='-mr-2 md:-mr-4'>
             {(reviews || []).map((review, i) => (
                <div key={i} className='text-center'>
-                  <div className='flex flex-col gap-1 items-center mr-2 md:mr-4 py-5 px-3 md:px-4 bg-gray-100 rounded-md'>
+                  <div className='flex flex-col gap-1 items-center mr-2 md:mr-4 py-5 px-3 md:px-4 bg-gradient-to-tr from-gray-100 to-gray-50 rounded-md'>
                      <div className='h-16 w-16 rounded-full relative'>
                         <Image
                            src={baseUrl(`storage/${review.user_image}`)}

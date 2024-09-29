@@ -6,7 +6,7 @@ import OrderDetail from './order-detail';
 
 const CheckoutForm = () => {
    return (
-      <div className='bg-gradient-to-tr from-amber-300  to-amber-200 shadow-md p-4 rounded-md'>
+      <div className='bg-gradient-to-tr from-gray-100  to-gray-50 border-[1px] border-gray-200 p-4 rounded-md'>
          <h2 className='font-bold text-xl'>Checkout form</h2>
          <div className='flex flex-col'>
             <RecipientForm />

@@ -28,7 +28,7 @@ const FloatingButtonCheckout = () => {
 
    return (
       <div className={`fixed ${isVisible ? 'translate-y-0' : 'translate-y-full'} transition-all ease-in-out duration-500 py-4 left-0 bottom-0 w-full flex items-center justify-center z-50`}>
-         <button className='bg-gradient-to-t from-amber-500  to-amber-400 shadow-sm  w-[calc(100%-24px)] md:w-96 text-base font-bold p-3 rounded-md '>Buy it now (COD)</button>
+         <button className='bg-gradient-to-t from-blue-600  to-blue-500 text-white shadow-sm  w-[calc(100%-24px)] md:w-96 text-base font-bold p-3 rounded-md '>Buy it now (COD)</button>
       </div>
    )
 }
