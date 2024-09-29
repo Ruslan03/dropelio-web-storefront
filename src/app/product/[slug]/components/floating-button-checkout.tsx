@@ -37,7 +37,7 @@ const FloatingButtonCheckout = ({ slug, coMode, coLink }: IFloatingButtonCheckou
 
    return (
       <div className={`fixed ${isVisible ? 'translate-y-0' : 'translate-y-full'} transition-all ease-in-out duration-500 py-4 left-0 bottom-0 w-full flex items-center justify-center z-50`}>
-         <Link href={href} target={coMode !== 'internal' ? '_blank': '_self'} className='bg-gradient-to-t from-blue-600  to-blue-500 text-white text-center transition-all ease-linear duration-150 hover:scale-105 shadow-sm  w-[calc(100%-24px)] md:w-96 text-base font-bold p-3 rounded-md'>Buy it now (COD)</Link>
+         <Link href={href} target={coMode !== 'internal' ? '_blank': '_self'} className='bg-gradient-to-t from-blue-600  to-blue-500 text-white text-center transition-all ease-linear duration-150 shadow-sm  w-[calc(100%-24px)] md:w-96 text-base font-bold p-3 rounded-md'>Buy it now (COD)</Link>
       </div>
    )
 }

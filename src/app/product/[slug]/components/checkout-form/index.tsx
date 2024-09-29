@@ -63,7 +63,7 @@ const CheckoutForm = ({ inputFields, productID }: { inputFields: string[], produ
       <div className='relative bg-gradient-to-tr from-gray-100  to-gray-50 border-[1px] border-gray-200 p-4 rounded-md'>
 
          {isShowSuccess && (
-            <div className='absolute left-0 w-full top-0 h-full bg-opacity-80 gap-3 bg-white flex flex-col items-center justify-center'>
+            <div className='absolute left-0 w-full top-0 h-full bg-opacity-90 gap-3 bg-white flex flex-col items-center justify-center'>
                <CircleCheckBig className='text-blue-600' size={64} />
                <p className='font-semibold text-xl text-center'>Thank You! your order has been processed</p>
                <button onClick={() => setIsShowSuccess(false)} className='px-3 py-2 mt-4 bg-gradient-to-t from-blue-600  to-blue-500 text-white rounded-md'>Continue shopping</button>
@@ -100,7 +100,7 @@ const CheckoutForm = ({ inputFields, productID }: { inputFields: string[], produ
                   />
                )}
 
-               <button type='submit' disabled={isLoading} className='bg-gradient-to-t from-blue-600  to-blue-500 text-white text-center flex justify-center disabled:from-blue-500 disabled:to-blue-400 transition-all ease-linear duration-150 shadow-sm w-full mt-2 text-base font-bold p-3 rounded-md '>
+               <button type='submit' disabled={isLoading} className={`${isShowSuccess ? 'bg-gray-300' : 'bg-gradient-to-t from-blue-600  to-blue-500'} text-white text-center flex justify-center disabled:from-blue-500 disabled:to-blue-400 transition-all ease-linear duration-150 shadow-sm w-full mt-2 text-base font-bold p-3 rounded-md`}>
                   {!isLoading ? 'Checkout' : <LoaderCircle className='animate-spin' strokeWidth={3} />}
                </button>
             </form>
