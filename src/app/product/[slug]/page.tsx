@@ -1,5 +1,4 @@
 import React from 'react'
-import Description from './components/description'
 import BaseContainer from '@/app/components/container'
 import BaseFooter from '@/app/components/footer'
 import { getProduct } from '@/app/lib/services'
@@ -11,6 +10,7 @@ import Features from './components/features'
 import ButtonCheckout from './components/button-checkout'
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
+import { LoadingSkeleton } from './components/description'
 
 const CheckoutForm = dynamic(() => import('./components/checkout-form'), {
    ssr: false,
@@ -18,6 +18,11 @@ const CheckoutForm = dynamic(() => import('./components/checkout-form'), {
 
 const Review = dynamic(() => import('./components/review'), {
    ssr: false,
+})
+
+const Description = dynamic(() => import('./components/description'), {
+   ssr: false,
+   loading: () => <LoadingSkeleton />
 })
 
 interface Props {
@@ -32,8 +37,8 @@ export async function generateMetadata({ params }: Props) {
 
    const product = await getProduct({ slug })
 
-   
-   if(!product) {
+
+   if (!product) {
       notFound()
    }
 
@@ -79,10 +84,8 @@ const Page = async ({ params }: Props) => {
             <BannerCOD />
 
             {product_features?.length > 0 && <Features features={product_features} />}
-            
-            <div>
-               <Description productID={id} />
-            </div>
+
+            <Description productID={id} />
 
             {product_reviews?.length > 0 && (<Review reviews={product_reviews} />)}
          </div>

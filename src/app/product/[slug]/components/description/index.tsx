@@ -68,13 +68,6 @@ const Description = ({ productID }: { productID: string }) => {
 
    return (
       <div className={styles.description}>
-
-         {isLoading && (
-            <div className='flex flex-col gap-8'>
-               {Array.from(new Array(2)).map((_, i) => <LoadingSkeleton key={i} />)}
-            </div>
-         )}
-
          {description.map((element: any, i: number) => {
             return <div key={i}>{element}</div>;
          })}
@@ -82,7 +75,7 @@ const Description = ({ productID }: { productID: string }) => {
    )
 }
 
-const LoadingSkeleton = () => {
+export const LoadingSkeleton = () => {
    return (
       <div className="flex flex-col space-y-3">
          <Skeleton className="h-[125px] w-full rounded-xl" />
