@@ -75,7 +75,7 @@ const Description = ({ productID }: { productID: string }) => {
             </div>
          )}
 
-         {!isLoading && description.map((element: any, i: number) => {
+         {description.map((element: any, i: number) => {
             return <div key={i}>{element}</div>;
          })}
       </div>
