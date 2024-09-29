@@ -71,7 +71,7 @@ const Description = ({ productID }: { productID: string }) => {
 
          {isLoading && (
             <div className='flex flex-col gap-8'>
-               {Array.from(new Array(3)).map((_, i) => <LoadingSkeleton key={i} />)}
+               {Array.from(new Array(2)).map((_, i) => <LoadingSkeleton key={i} />)}
             </div>
          )}
 
