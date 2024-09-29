@@ -7,10 +7,10 @@ const BannerCOD = () => {
          <Image
             src={'/cod.png'}
             alt='banner-cod'
-            width={96}
-            height={36}
+            width={86}
+            height={26}
          />
-         <p className='font-semibold text-xl italic'>COD (cash on delivery)</p>
+         <p className='font-semibold text-base italic'>COD (cash on delivery)</p>
       </div>
    )
 }

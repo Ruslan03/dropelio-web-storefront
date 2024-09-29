@@ -2,28 +2,15 @@ import React from 'react'
 import BaseContainer from '@/app/components/container'
 import BaseFooter from '@/app/components/footer'
 import { getProduct } from '@/app/lib/services'
-import Badge from './components/badge'
-import ImageSlider from './components/image-slider'
-import Price from './components/price'
-import BannerCOD from './components/banner-cod'
-import Features from './components/features'
-import FloatingButtonCheckout from './components/floating-button-checkout'
+import Price from '../components/price'
+import Features from '../components/features'
+import BannerCOD from '../components/banner-cod'
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
-import { LoadingSkeleton } from './components/description'
 import { baseUrl } from '@/app/lib/base-path'
 
-const CheckoutForm = dynamic(() => import('./components/checkout-form'), {
+const CheckoutForm = dynamic(() => import('../components/checkout-form'), {
    ssr: false,
-})
-
-const Review = dynamic(() => import('./components/review'), {
-   ssr: false,
-})
-
-const Description = dynamic(() => import('./components/description'), {
-   ssr: false,
-   loading: () => <LoadingSkeleton />
 })
 
 interface Props {
@@ -45,8 +32,8 @@ export async function generateMetadata({ params }: Props) {
    const images = (product?.product_images || []).map((img: any) => baseUrl(`storage/${img.image_path}`))
 
    return {
-      title: product.title,
-      description: product.title,
+      title: `Checkout ${product.title}`,
+      description: `Checkout ${product.title}`,
       url: product.product_url,
       type: 'product',
       openGraph: {
@@ -72,48 +59,30 @@ const Page = async ({ params }: Props) => {
    const {
       id,
       title,
-      sold,
       product_currency,
       product_price_formatted,
       compare_at_price_formatted,
-      product_images,
       product_features,
-      product_reviews,
-      checkout_mode: co_mode,
-      checkout_link: co_link,
-      store
+      checkout_form: co_form,
    } = product
-   
-   const isShowCoForm = co_mode === 'internal' && store?.co_on_preview == 1
+
+   const inputFields = co_form?.split(',')
 
    return (
       <BaseContainer>
-         <div className='flex flex-col gap-8 mb-8'>
+         <div className='flex flex-col gap-5 mb-8'>
             <div className='flex flex-col items-start gap-2'>
                <h1 className='text-2xl font-semibold'>{title}</h1>
-               <Badge>{`${sold} Sold`}</Badge>
-
                <Price currency={product_currency} price={product_price_formatted} compare={compare_at_price_formatted} />
-
             </div>
-
-            <ImageSlider images={product_images} />
-
-            {isShowCoForm && <CheckoutForm productID={id} inputFields={[]} />}
 
             <BannerCOD />
 
-            {product_features?.length > 0 && <Features features={product_features} />}
+            <Features features={product_features} />
 
-            <Description productID={id} />
-
-            {product_reviews?.length > 0 && (<Review reviews={product_reviews} />)}
+            <CheckoutForm productID={id} inputFields={inputFields} />
          </div>
-
-         {!isShowCoForm && <FloatingButtonCheckout slug={slug} coMode={co_mode} coLink={co_link} />}
-         
          <BaseFooter />
-
       </BaseContainer>
    )
 }
