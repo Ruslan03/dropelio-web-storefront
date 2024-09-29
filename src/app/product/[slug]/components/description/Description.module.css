@@ -1,5 +1,5 @@
 .description {
-   @apply min-h-96;
+   @apply min-h-screen;
 }
 
 .description h1 {

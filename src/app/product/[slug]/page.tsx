@@ -8,15 +8,16 @@ import ImageSlider from './components/image-slider'
 import Price from './components/price'
 import BannerCOD from './components/banner-cod'
 import Features from './components/features'
-import Review from './components/review'
-// import CheckoutForm from './components/checkout-form'
 import ButtonCheckout from './components/button-checkout'
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 
 const CheckoutForm = dynamic(() => import('./components/checkout-form'), {
    ssr: false,
-   loading: () => <p>Loading checkout form...</p>
+})
+
+const Review = dynamic(() => import('./components/review'), {
+   ssr: false,
 })
 
 interface Props {
@@ -48,8 +49,6 @@ const Page = async ({ params }: Props) => {
 
    const product = await getProduct({ slug })
 
-   
-
    const {
       id,
       title,
@@ -75,12 +74,12 @@ const Page = async ({ params }: Props) => {
 
             <ImageSlider images={product_images} />
 
-            <BannerCOD />
-
-            <Features features={product_features} />
-
             <CheckoutForm />
 
+            <BannerCOD />
+
+            {product_features?.length > 0 && <Features features={product_features} />}
+            
             <div>
                <Description productID={id} />
             </div>

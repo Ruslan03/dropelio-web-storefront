@@ -37,9 +37,12 @@ const SlideImage = ({ src }: { src: string }) => {
          <Image
             src={src}
             alt='image-product'
-            fill={true}
+            fill
             priority
             onLoad={() => setIsLoading(false)}
+            style={{
+               objectFit: 'cover',
+            }}
          />
       </div>
    )
