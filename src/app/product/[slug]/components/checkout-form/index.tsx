@@ -74,7 +74,7 @@ const CheckoutForm = ({ inputFields, productID }: { inputFields: string[], produ
             <form className='flex w-full flex-col gap-3' onSubmit={handleSubmit}>
                <InputField name='name' type='text' value={payload.name} required placeholder="Your name" onChange={handleInputChange} />
 
-               <InputField name='whatsapp' type='text' value={payload.whatsapp} placeholder="Your whatsapp number" onChange={handleInputChange} />
+               <InputField name='whatsapp' type='text' value={payload.whatsapp} required placeholder="Your whatsapp number" onChange={handleInputChange} />
                <InputField name='city_id' type='text' value={payload?.city_id} placeholder="City" onChange={handleInputChange} />
                <Textarea
                   name='address'
