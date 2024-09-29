@@ -46,7 +46,7 @@ const Review = ({ reviews }: IReview) => {
                         </div>
                      </div>
                      <div className='w-full h-20 flex items-center justify-center'>
-                        <p className='text-sm italic line-clamp-4 text-wrap' title={review.review}>{review.review} aku dilahirkan bukan untuk menyakitimu tapi ku dilahirkan tak membahagiakan hidupmu mungkin ku bajingan tapi bukan penjahat perang yang selalu menikam tanpa belas kasihan</p>
+                        <p className='text-sm italic line-clamp-4 text-wrap' title={review.review}>{review.review}</p>
                         {/* <Image
                      src={baseUrl(`storage/${review.product_image}`)}
                      alt='review-img'
