@@ -29,7 +29,7 @@ const Review = ({ reviews }: IReview) => {
          <Slider {...defaultConfig} slidesToShow={2} autoplay className='-mr-2 md:-mr-4'>
             {(reviews || []).map((review, i) => (
                <div key={i} className='text-center'>
-                  <div className='flex flex-col gap-1 items-center mr-2 md:mr-4 p-4 bg-yellow-50 rounded-md'>
+                  <div className='flex flex-col gap-1 items-center mr-2 md:mr-4 py-5 px-3 md:px-4 bg-gray-100 rounded-md'>
                      <div className='h-16 w-16 rounded-full relative'>
                         <Image
                            src={baseUrl(`storage/${review.user_image}`)}
@@ -41,12 +41,12 @@ const Review = ({ reviews }: IReview) => {
                      </div>
                      <div>
                         <p className='font-semibold'>{review.user_name}</p>
-                        <div className='text-yellow-400 text-xl'>
+                        <div className='text-yellow-800 text-xl'>
                            {Array.from(new Array(review.rating)).map((_, star) => <span key={star}>&#9733;</span>)}
                         </div>
                      </div>
                      <div className='w-full h-20 flex items-center justify-center'>
-                        <p className='text-sm italic line-clamp-4 text-wrap' title={review.review}>{review.review}</p>
+                        <p className='text-sm italic line-clamp-4 text-wrap' title={review.review}>{review.review} aku dilahirkan bukan untuk menyakitimu tapi ku dilahirkan tak membahagiakan hidupmu mungkin ku bajingan tapi bukan penjahat perang yang selalu menikam tanpa belas kasihan</p>
                         {/* <Image
                      src={baseUrl(`storage/${review.product_image}`)}
                      alt='review-img'

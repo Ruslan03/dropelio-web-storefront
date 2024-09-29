@@ -7,7 +7,7 @@ import ImageSlider from './components/image-slider'
 import Price from './components/price'
 import BannerCOD from './components/banner-cod'
 import Features from './components/features'
-import ButtonCheckout from './components/button-checkout'
+import FloatingButtonCheckout from './components/floating-button-checkout'
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { LoadingSkeleton } from './components/description'
@@ -90,7 +90,7 @@ const Page = async ({ params }: Props) => {
             {product_reviews?.length > 0 && (<Review reviews={product_reviews} />)}
          </div>
 
-         <ButtonCheckout />
+         <FloatingButtonCheckout />
 
          <BaseFooter />
 
