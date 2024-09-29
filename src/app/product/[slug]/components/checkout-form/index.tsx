@@ -63,7 +63,7 @@ const CheckoutForm = ({ inputFields, productID }: { inputFields: string[], produ
          {isShowSuccess && (
             <div className='absolute left-0 w-full top-0 h-full bg-opacity-80 gap-3 bg-white flex flex-col items-center justify-center'>
                <CircleCheckBig className='text-blue-600' size={64} />
-               <p className='font-semibold text-xl'>Thank You! your order has been processed</p>
+               <p className='font-semibold text-xl text-center'>Thank You! your order has been processed</p>
                <button onClick={() => setIsShowSuccess(false)} className='px-3 py-2 mt-4 bg-gradient-to-t from-blue-600  to-blue-500 text-white rounded-md'>Continue shopping</button>
             </div>
          )}
