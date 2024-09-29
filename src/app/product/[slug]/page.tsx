@@ -51,10 +51,10 @@ export async function generateMetadata({ params }: Props) {
       type: 'product',
       openGraph: {
          images,
-         url: product.product_url,
-         logo: 'https://dropelio.shop/images/favicon.ico',
       },
       other: {
+         'og:logo': 'https://dropelio.shop/images/favicon.ico',
+         'og:url': product.product_url,
          'og:type': 'product',
          'product:price.amount': product?.product_price || 0,
          'product:price.currency': product?.product_currency || ''
