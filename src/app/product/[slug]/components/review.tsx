@@ -41,7 +41,7 @@ const Review = ({ reviews }: IReview) => {
                      </div>
                      <div>
                         <p className='font-semibold'>{review.user_name}</p>
-                        <div className='text-yellow-800 text-xl'>
+                        <div className='text-yellow-400 text-xl'>
                            {Array.from(new Array(review.rating)).map((_, star) => <span key={star}>&#9733;</span>)}
                         </div>
                      </div>
