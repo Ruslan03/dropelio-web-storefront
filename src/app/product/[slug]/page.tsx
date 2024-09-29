@@ -11,6 +11,7 @@ import FloatingButtonCheckout from './components/floating-button-checkout'
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { LoadingSkeleton } from './components/description'
+import { baseUrl } from '@/app/lib/base-path'
 
 const CheckoutForm = dynamic(() => import('./components/checkout-form'), {
    ssr: false,
@@ -37,13 +38,24 @@ export async function generateMetadata({ params }: Props) {
 
    const product = await getProduct({ slug })
 
-
    if (!product) {
       notFound()
    }
 
+   const images = (product?.product_images || []).map((img: any) => baseUrl(`storage/${img.image_path}`))
+
    return {
       title: product.title,
+      description: product.title,
+      url: product.product_url,
+      type: 'product',
+      openGraph: {
+         images,
+      },
+      other: {
+         'product:price.amount': product?.product_price || 0,
+         'product:price.currency': product?.product_currency || ''
+      }
    }
 }
 
