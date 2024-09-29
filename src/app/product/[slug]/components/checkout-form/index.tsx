@@ -56,6 +56,8 @@ const CheckoutForm = ({ inputFields, productID }: { inputFields: string[], produ
       }).finally(() => setIsLoading(false))
    }
 
+   const af = (field: string) => inputFields.indexOf(field) > -1
+
 
    return (
       <div className='relative bg-gradient-to-tr from-gray-100  to-gray-50 border-[1px] border-gray-200 p-4 rounded-md'>
@@ -73,25 +75,30 @@ const CheckoutForm = ({ inputFields, productID }: { inputFields: string[], produ
          <div className='flex flex-col mt-3'>
             <form className='flex w-full flex-col gap-3' onSubmit={handleSubmit}>
                <InputField name='name' type='text' value={payload.name} required placeholder="Your name" onChange={handleInputChange} />
-
                <InputField name='whatsapp' type='text' value={payload.whatsapp} required placeholder="Your whatsapp number" onChange={handleInputChange} />
-               <InputField name='city_id' type='text' value={payload?.city_id} placeholder="City" onChange={handleInputChange} />
-               <Textarea
-                  name='address'
-                  className='bg-white'
-                  placeholder="Address"
-                  onChange={handleInputChange}
-                  value={payload?.address || ''}
-               />
-               <InputField name='qty' type='number' value={payload.qty} required placeholder="Purchase amount" onChange={handleInputChange} />
-               <InputField name='email' type='email' value={payload?.email || ''} placeholder="Email" onChange={handleInputChange} />
-               <Textarea
-                  name='note'
-                  className='bg-white'
-                  placeholder="Enter your Notes"
-                  onChange={handleInputChange}
-                  value={payload?.note || ''}
-               />
+               <InputField avail={af('city')} name='city_id' type='text' value={payload?.city_id} placeholder="City" onChange={handleInputChange} />
+
+               {af('address') && (
+                  <Textarea
+                     name='address'
+                     className='bg-white'
+                     placeholder="Address"
+                     onChange={handleInputChange}
+                     value={payload?.address || ''}
+                  />
+               )}
+               <InputField avail={af('qty')} name='qty' type='number' value={payload.qty} required placeholder="Purchase amount" onChange={handleInputChange} />
+               <InputField avail={af('email')} name='email' type='email' value={payload?.email || ''} placeholder="Email" onChange={handleInputChange} />
+
+               {af('notes') && (
+                  <Textarea
+                     name='note'
+                     className='bg-white'
+                     placeholder="Enter your Notes"
+                     onChange={handleInputChange}
+                     value={payload?.note || ''}
+                  />
+               )}
 
                <button type='submit' disabled={isLoading} className='bg-gradient-to-t from-blue-600  to-blue-500 text-white text-center flex justify-center disabled:from-blue-500 disabled:to-blue-400 transition-all ease-linear duration-150 shadow-sm w-full mt-2 text-base font-bold p-3 rounded-md '>
                   {!isLoading ? 'Checkout' : <LoaderCircle className='animate-spin' strokeWidth={3} />}
@@ -109,9 +116,13 @@ interface IInputField {
    placeholder: string
    onChange: ChangeEventHandler<HTMLInputElement> | undefined
    required?: boolean
+   avail?: boolean | undefined
 }
 
 const InputField = (props: IInputField) => {
+   if(props?.avail === false) {
+      return null
+   }
    return <Input className='bg-white' {...props} />
 }
 
