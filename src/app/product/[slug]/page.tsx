@@ -89,7 +89,7 @@ const Page = async ({ params }: Props) => {
       <BaseContainer>
          <div className='flex flex-col gap-8 mb-8'>
             <div className='flex flex-col items-start gap-2'>
-               <h1 className='text-2xl font-semibold'>{title}</h1>
+               <h1 className='text-2xl md:text-3xl font-semibold'>{title}</h1>
                <BadgeSold sold={sold} />
 
                <Price currency={product_currency} price={product_price_formatted} compare={compare_at_price_formatted} />
