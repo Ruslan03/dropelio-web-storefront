@@ -80,10 +80,12 @@ const Page = async ({ params }: Props) => {
       product_reviews,
       checkout_mode: co_mode,
       checkout_link: co_link,
+      checkout_form: co_form,
       store
    } = product
    
    const isShowCoForm = co_mode === 'internal' && store?.co_on_preview == 1
+   const inputFields = co_form?.split(',')
 
    return (
       <BaseContainer>
@@ -98,7 +100,7 @@ const Page = async ({ params }: Props) => {
 
             <ImageSlider images={product_images} />
 
-            {isShowCoForm && <CheckoutForm storeID={store?.id} productID={id} inputFields={[]} />}
+            {isShowCoForm && <CheckoutForm storeID={store?.id} productID={id} inputFields={inputFields} />}
 
             <BannerCOD />
 
