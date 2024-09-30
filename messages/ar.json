@@ -1,22 +1,22 @@
 {
    "General": {
-      "CashOnDelivery": "Cash On Delivery"
+      "CashOnDelivery": "الدفع عند الاستلام"
    },
    "ProductReview": {
-      "BadgeSold": "Sold",
-      "CTAButtonCheckout": "Checkout now (COD)"
+      "BadgeSold": "مبيعة",
+      "CTAButtonCheckout": "أرسل طلبك الأن"
    },
    "CheckoutForm": {
-      "Title": "Checkout Form",
-      "Name": "Your name",
-      "PhoneNumber": "Your whatsapp number",
-      "City": "Select city",
-      "Address": "Detail address",
-      "Quantity": "Quantity",
-      "Email": "Email",
-      "Notes": "Notes",
-      "ButtonSubmit": "Checkout",
-      "ButtonContinueShopping": "Continue shopping",
-      "SuccessMessage": "Thank you! your order has been processed"
+      "Title": "معلومات الطلب",
+      "Name": "ادخل الاسم هنا...",
+      "PhoneNumber": "ادخل رقم الهاتف...",
+      "City": "اأختر المدينة",
+      "Address": "العوان الكامل",
+      "Quantity": "الكمية",
+      "Email": "البريد الالكتروني",
+      "Notes": "أكتب ملاحظاتك هنا...",
+      "ButtonSubmit": "أرسل طلبك الأن",
+      "ButtonContinueShopping": "واصل طلبك",
+      "SuccessMessage": "شكرا على طلبك, سيتم معالجة طلبك قريبا وإرساله لك, يرجى إبقاء هاتفك شغال حتى يتمكن موزعنا من التواصل معك, أي إلغاء للطلب يسبب لنا خسارة كبيرة"
    }
 }

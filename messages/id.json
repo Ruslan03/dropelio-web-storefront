@@ -4,18 +4,18 @@
    },
    "ProductReview": {
       "BadgeSold": "Terjual",
-      "CTAButtonCheckout": "Checkout sekarang (COD)"
+      "CTAButtonCheckout": "Pesan sekarang (COD)"
    },
    "CheckoutForm": {
-      "Title": "Form Checkout",
+      "Title": "Data Penerima:",
       "Name": "Nama anda",
       "PhoneNumber": "Nomor whatsapp anda",
-      "City": "Pilih Kota",
-      "Address": "Alamat lengkap",
-      "Quantity": "Quantity",
+      "City": "Pilih Kota / Kec",
+      "Address": "Alamat Lengkap Anda (Sertakan Patokan Rumah, RT/RW, Desa/Kelurahan, Kecamatan, Kabupaten)",
+      "Quantity": "Jumlah Pesanan",
       "Email": "Email",
       "Notes": "Catatan",
-      "ButtonSubmit": "Checkout",
+      "ButtonSubmit": "Pesan sekarang (COD)",
       "ButtonContinueShopping": "Lanjutkan belanja",
       "SuccessMessage": "Terima kasih! Orderan kamu sedang diproses"
    }

@@ -1,22 +1,22 @@
 {
    "General": {
-      "CashOnDelivery": "Cash On Delivery"
+      "CashOnDelivery": "Paiement à la livraison"
    },
    "ProductReview": {
-      "BadgeSold": "Sold",
-      "CTAButtonCheckout": "Checkout now (COD)"
+      "BadgeSold": "Vendu",
+      "CTAButtonCheckout": "Commandez maintenant"
    },
    "CheckoutForm": {
       "Title": "Checkout Form",
-      "Name": "Your name",
-      "PhoneNumber": "Your whatsapp number",
-      "City": "Select city",
-      "Address": "Detail address",
-      "Quantity": "Quantity",
+      "Name": "Votre nom",
+      "PhoneNumber": "Votre numéro Tel",
+      "City": "Sélectionner la ville",
+      "Address": "Adresse détaillée",
+      "Quantity": "Quantité",
       "Email": "Email",
-      "Notes": "Notes",
-      "ButtonSubmit": "Checkout",
-      "ButtonContinueShopping": "Continue shopping",
-      "SuccessMessage": "Thank you! your order has been processed"
+      "Notes": "Remarques",
+      "ButtonSubmit": "Envoyer la commande",
+      "ButtonContinueShopping": "Continuer",
+      "SuccessMessage": "Merci pour votre commande ! Le produit sera expédié aujourd'hui et il faudra généralement entre 2 et 5 jours pour vous parvenir. Veuillez garder votre téléphone allumé afin que le livreur puisse vous contacter."
    }
 }

@@ -4,12 +4,12 @@
    },
    "ProductReview": {
       "BadgeSold": "Sold",
-      "CTAButtonCheckout": "Checkout now (COD)"
+      "CTAButtonCheckout": "Complete Order"
    },
    "CheckoutForm": {
       "Title": "Checkout Form",
       "Name": "Your name",
-      "PhoneNumber": "Your whatsapp number",
+      "PhoneNumber": "Your Phone / whatsapp number",
       "City": "Select city",
       "Address": "Detail address",
       "Quantity": "Quantity",
@@ -17,6 +17,6 @@
       "Notes": "Notes",
       "ButtonSubmit": "Checkout",
       "ButtonContinueShopping": "Continue shopping",
-      "SuccessMessage": "Thank you! your order has been processed"
+      "SuccessMessage": "Thank you! Your order is on the move! We’ll contact you soon."
    }
 }
