@@ -98,7 +98,7 @@ const Page = async ({ params }: Props) => {
 
             <ImageSlider images={product_images} />
 
-            {isShowCoForm && <CheckoutForm productID={id} inputFields={[]} />}
+            {isShowCoForm && <CheckoutForm storeID={store?.id} productID={id} inputFields={[]} />}
 
             <BannerCOD />
 

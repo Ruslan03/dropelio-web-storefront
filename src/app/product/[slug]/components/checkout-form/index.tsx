@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { postCheckout } from '@/app/lib/services';
 import { CircleCheckBig, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import ShipmentForm from './components/shipment-form';
 
 type Payload = {
    name: string
@@ -17,7 +18,7 @@ type Payload = {
    note?: string
 }
 
-const CheckoutForm = ({ inputFields, productID }: { inputFields: string[], productID: string }) => {
+const CheckoutForm = ({ inputFields, productID, storeID }: { inputFields: string[], productID: string, storeID: string }) => {
    const [isShowSuccess, setIsShowSuccess] = useState(false)
    const [isLoading, setIsLoading] = useState(false)
 
@@ -34,6 +35,15 @@ const CheckoutForm = ({ inputFields, productID }: { inputFields: string[], produ
          ...prevPayload,
          [name]: value
       }))
+   }
+
+   const handleApplyShipment = (shipment: any) => {
+
+      setPayload((prevPayload) => ({
+         ...prevPayload,
+         city_id: shipment?.city_id
+      }))
+
    }
 
    const handleSubmit = async (e: FormEvent) => {
@@ -77,7 +87,12 @@ const CheckoutForm = ({ inputFields, productID }: { inputFields: string[], produ
             <form className='flex w-full flex-col gap-3' onSubmit={handleSubmit}>
                <InputField name='name' type='text' value={payload.name} required placeholder={t('Name')} onChange={handleInputChange} />
                <InputField name='whatsapp' type='text' value={payload.whatsapp} required placeholder={t('PhoneNumber')} onChange={handleInputChange} />
-               <InputField avail={af('city')} name='city_id' type='text' value={payload?.city_id} placeholder={t('City')} onChange={handleInputChange} />
+
+               <ShipmentForm
+                  storeID={storeID}
+                  productID={productID}
+                  onApply={(shipment) => handleApplyShipment(shipment)}
+               />
 
                {af('address') && (
                   <Textarea
@@ -121,10 +136,11 @@ interface IInputField {
 }
 
 const InputField = (props: IInputField) => {
-   if(props?.avail === false) {
+   const {avail, ...inputProps} = props
+   if(avail === false) {
       return null
    }
-   return <Input className='bg-white' {...props} />
+   return <Input className='bg-white' {...inputProps} />
 }
 
 export default CheckoutForm
