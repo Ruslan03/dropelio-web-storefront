@@ -1,7 +1,9 @@
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React from 'react'
 
 const BannerCOD = () => {
+   const t = useTranslations('General')
    return (
       <div className='flex gap-2 items-center'>
          <Image
@@ -10,7 +12,7 @@ const BannerCOD = () => {
             width={86}
             height={26}
          />
-         <p className='font-semibold text-base italic'>COD (cash on delivery)</p>
+         <p className='font-semibold text-base italic'>COD ({t('CashOnDelivery')})</p>
       </div>
    )
 }

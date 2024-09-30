@@ -1,0 +1,22 @@
+{
+   "General": {
+      "CashOnDelivery": "Bayar di Tempat"
+   },
+   "ProductReview": {
+      "BadgeSold": "Terujual",
+      "CTAButtonCheckout": "Checkout sekarang (COD)"
+   },
+   "CheckoutForm": {
+      "Title": "Form Checkout",
+      "Name": "Nama anda",
+      "PhoneNumber": "Nomor whatsapp anda",
+      "City": "Pilih Kota",
+      "Address": "Alamat lengkap",
+      "Quantity": "Quantity",
+      "Email": "Email",
+      "Notes": "Catatan",
+      "ButtonSubmit": "Checkout",
+      "ButtonContinueShopping": "Lanjutkan belanja",
+      "SuccessMessage": "Terima kasih! Orderan kamu sedang diproses"
+   }
+}

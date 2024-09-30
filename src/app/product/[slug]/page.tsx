@@ -2,7 +2,7 @@ import React from 'react'
 import BaseContainer from '@/app/components/container'
 import BaseFooter from '@/app/components/footer'
 import { getProduct } from '@/app/lib/services'
-import Badge from './components/badge'
+import BadgeSold from './components/badge-sold'
 import ImageSlider from './components/image-slider'
 import Price from './components/price'
 import BannerCOD from './components/banner-cod'
@@ -91,7 +91,7 @@ const Page = async ({ params }: Props) => {
          <div className='flex flex-col gap-8 mb-8'>
             <div className='flex flex-col items-start gap-2'>
                <h1 className='text-2xl font-semibold'>{title}</h1>
-               <Badge>{`${sold} Sold`}</Badge>
+               <BadgeSold sold={sold} />
 
                <Price currency={product_currency} price={product_price_formatted} compare={compare_at_price_formatted} />
 

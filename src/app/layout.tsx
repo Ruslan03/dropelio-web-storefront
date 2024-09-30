@@ -1,20 +1,32 @@
 import type { Metadata } from "next";
-import "./globals.css";
 
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
+
+import "./globals.css";
 
 export const metadata: Metadata = {
    title: "Dropelio",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
    children,
 }: Readonly<{
    children: React.ReactNode;
 }>) {
+
+   const locale = await getLocale();
+
+   // Providing all messages to the client
+   // side is the easiest way to get started
+   const messages = await getMessages();
+
    return (
-      <html lang="en">
+      <html lang={locale}>
          <body>
-            {children}
+            <NextIntlClientProvider messages={messages}>
+               {children}
+            </NextIntlClientProvider>
          </body>
       </html>
    );
