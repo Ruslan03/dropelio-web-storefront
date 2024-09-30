@@ -62,7 +62,6 @@ export async function generateMetadata({ params }: Props) {
    }
 }
 
-
 const Page = async ({ params }: Props) => {
 
    const { slug } = params

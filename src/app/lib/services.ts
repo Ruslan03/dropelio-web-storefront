@@ -43,7 +43,7 @@ export const getDescription = async ({ productID }: { productID: string }) => {
    }
 }
 
-export const postCheckout = async (params: {payload: any, productID: string}) => {
+export const postCheckout = async (params: { payload: any, productID: string }) => {
 
    try {
       const baseUrl = getBaseApiURL()
@@ -58,12 +58,39 @@ export const postCheckout = async (params: {payload: any, productID: string}) =>
       });
       const response = await post.json();
 
-      if(post.status === 200) {
+      if (post.status === 200) {
          return response
       }
-      
+
       throw response
    } catch (err) {
       throw err
+   }
+}
+
+export const getStore = async () => {
+
+   try {
+      const baseUrl = getBaseApiURL()
+      const res = await fetch(`${baseUrl}/storefront/my-store`, { next: { revalidate: 0 } });
+
+      if (res.status === 200) {
+         const json = await res.json();
+         const payload = json?.payload
+
+         const store = {
+            language_code: payload?.language_code || null,
+            direction: payload?.direction || null,
+            name: payload?.name || null,
+            api_base_url: payload?.api_base_url || null
+         }
+
+         return store
+      }
+
+      return null
+   } catch (err) {
+
+      return null
    }
 }

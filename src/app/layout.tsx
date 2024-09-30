@@ -4,10 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 
 import "./globals.css";
-
-export const metadata: Metadata = {
-   title: "Dropelio",
-};
+import { getStore } from "./lib/services";
 
 export default async function RootLayout({
    children,
@@ -15,14 +12,15 @@ export default async function RootLayout({
    children: React.ReactNode;
 }>) {
 
-   const locale = await getLocale();
+   const store = await getStore()
 
-   // Providing all messages to the client
-   // side is the easiest way to get started
+   const dir = store?.direction || 'ltr'
+
+   const locale = await getLocale();
    const messages = await getMessages();
 
    return (
-      <html lang={locale}>
+      <html lang={locale} dir={dir}>
          <body>
             <NextIntlClientProvider messages={messages}>
                {children}
