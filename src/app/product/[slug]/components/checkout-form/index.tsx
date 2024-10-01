@@ -6,19 +6,27 @@ import { Textarea } from '@/components/ui/textarea';
 import { postCheckout } from '@/app/lib/services';
 import { CircleCheckBig, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import ShipmentForm from './components/shipment-form';
+import ShipmentForm, { ShipmentType } from './shipment-form';
 
 type Payload = {
    name: string
    qty: number
    whatsapp: string
    city_id?: number
+   city_name?: string
    address?: string
    email?: string
    note?: string
 }
 
-const CheckoutForm = ({ inputFields, productID, storeID }: { inputFields: string[], productID: string, storeID: string }) => {
+interface ICheckoutForm {
+   country: string
+   inputFields: string[]
+   productID: string
+   storeID: string
+}
+
+const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutForm) => {
    const [isShowSuccess, setIsShowSuccess] = useState(false)
    const [isLoading, setIsLoading] = useState(false)
 
@@ -37,11 +45,12 @@ const CheckoutForm = ({ inputFields, productID, storeID }: { inputFields: string
       }))
    }
 
-   const handleApplyShipment = (shipment: any) => {
+   const handleApplyShipment = (shipment: ShipmentType) => {
 
       setPayload((prevPayload) => ({
          ...prevPayload,
-         city_id: shipment?.city_id
+         city_id: shipment.city.id as number,
+         city_name: shipment.city.name as string
       }))
 
    }
@@ -89,6 +98,7 @@ const CheckoutForm = ({ inputFields, productID, storeID }: { inputFields: string
                <InputField name='whatsapp' type='text' value={payload.whatsapp} required placeholder={t('PhoneNumber')} onChange={handleInputChange} />
 
                <ShipmentForm
+                  country={country}
                   storeID={storeID}
                   productID={productID}
                   onApply={(shipment) => handleApplyShipment(shipment)}

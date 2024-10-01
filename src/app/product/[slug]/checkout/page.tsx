@@ -81,7 +81,12 @@ const Page = async ({ params }: Props) => {
 
             <Features features={product_features} />
 
-            <CheckoutForm productID={id} storeID={store?.id} inputFields={inputFields} />
+            <CheckoutForm
+               country={store?.country}
+               productID={id}
+               storeID={store?.id}
+               inputFields={inputFields}
+            />
          </div>
          <BaseFooter />
       </BaseContainer>

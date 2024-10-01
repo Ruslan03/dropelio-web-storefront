@@ -18,5 +18,26 @@
       "ButtonSubmit": "Checkout",
       "ButtonContinueShopping": "Continue shopping",
       "SuccessMessage": "Thank you! Your order is on the move! We’ll contact you soon."
+   },
+   "ShipmentForm": {
+      "Placeholder": "Pilih alamat pengiriman...",
+      "Header": {
+         "Title": "Alamat Pengiriman",
+         "SubTitle": "Pilih alamat pengiriman"
+      },
+      "Body": {
+         "SearchCityPlaceholder": "Cari kota/kabupaten...",
+         "NoShippingAddress": "Tidak ada alamat pengiriman",
+         "Algeria": {
+            "SelectStateLabel": "State (Wilaya)",
+            "SelectStatePlaceholder": "Pilih state...",
+            "CityLabel": "City (Commune)"
+         }
+      },
+      "Footer": {
+         "DeliveryCityLabel": "Kota Pengiriman",
+         "ShippingCostLabel": "Ongkos Pengiriman",
+         "CTASave": "Terapkan"
+      }
    }
 }

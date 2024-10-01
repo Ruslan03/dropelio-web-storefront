@@ -18,5 +18,26 @@
       "ButtonSubmit": "Pesan sekarang (COD)",
       "ButtonContinueShopping": "Lanjutkan belanja",
       "SuccessMessage": "Terima kasih! Orderan kamu sedang diproses"
+   },
+   "ShipmentForm": {
+      "Placeholder": "Pilih alamat pengiriman...",
+      "Header": {
+         "Title": "Alamat Pengiriman",
+         "SubTitle": "Pilih alamat pengiriman"
+      },
+      "Body": {
+         "SearchCityPlaceholder": "Cari kota/kabupaten...",
+         "NoShippingAddress": "Tidak ada alamat pengiriman",
+         "Algeria": {
+            "SelectStateLabel": "State (Wilaya)",
+            "SelectStatePlaceholder": "Pilih state...",
+            "CityLabel": "City (Commune)"
+         }
+      },
+      "Footer": {
+         "DeliveryCityLabel": "Kota Pengiriman",
+         "ShippingCostLabel": "Ongkos Pengiriman",
+         "CTASave": "Terapkan"
+      }
    }
 }
