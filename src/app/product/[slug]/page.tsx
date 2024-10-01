@@ -2,7 +2,7 @@ import React from 'react'
 import BaseContainer from '@/app/components/container'
 import BaseFooter from '@/app/components/footer'
 import { getProduct } from '@/app/lib/services'
-import BadgeSold from './components/badge-sold'
+import BadgeRating from './components/badge-rating'
 import ImageSlider from './components/image-slider'
 import Price from './components/price'
 import BannerCOD from './components/banner-cod'
@@ -86,16 +86,19 @@ const Page = async ({ params }: Props) => {
 
    const isShowCoForm = co_mode === 'internal' && store?.co_on_preview == 1
    const inputFields = co_form?.split(',')
-
+   const ratings = product_reviews.map((review: any) => Math.max(Number(review.rating) || 0), 5)
+   
    return (
       <BaseContainer>
-         <div className='flex flex-col gap-8 mb-8'>
+         <div className='flex flex-col gap-6 mb-8'>
             <div className='flex flex-col items-start gap-2'>
                <h1 className='text-2xl md:text-3xl font-semibold'>{title}</h1>
-               <BadgeSold sold={sold} />
 
                <Price currency={product_currency} price={product_price_formatted} compare={compare_at_price_formatted} />
 
+               <div className='mt-3'>
+                  <BadgeRating sold={sold} ratings={ratings} />
+               </div>
             </div>
 
             <ImageSlider images={product_images} />
@@ -119,7 +122,7 @@ const Page = async ({ params }: Props) => {
          </div>
 
          {!isShowCoForm && <FloatingButtonCheckout slug={slug} coMode={co_mode} coLink={co_link} />}
-         
+
          <BaseFooter />
 
       </BaseContainer>
