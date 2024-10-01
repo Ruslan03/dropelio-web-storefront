@@ -1,9 +1,10 @@
-import { Cairo, Inter } from 'next/font/google'
+import { Cairo } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 
 import "./globals.css";
 import { getStore } from "./lib/services";
+import { Viewport } from 'next';
 
 
 const cairo = Cairo({
@@ -12,6 +13,13 @@ const cairo = Cairo({
    subsets: ['latin'],
    display: 'swap',
 })
+
+export const viewport: Viewport = {
+   width: 'device-width',
+   initialScale: 1,
+   maximumScale: 1,
+   userScalable: false,
+ }
 
 export default async function RootLayout({
    children,
