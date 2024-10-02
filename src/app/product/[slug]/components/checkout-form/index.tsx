@@ -45,9 +45,9 @@ const CheckoutForm = ({ inputFields, productID, storeID, country, currency, prod
    })
 
    const summary: TypeSummary = {
-         qty: payload.qty,
-         price: productPrice,
-         shippingCost
+      qty: payload.qty,
+      price: productPrice,
+      shippingCost
    }
 
    const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -106,27 +106,28 @@ const CheckoutForm = ({ inputFields, productID, storeID, country, currency, prod
             </div>
          )}
 
-
          <h2 className='font-bold text-xl'>{t('Title')}</h2>
          <div className='flex flex-col mt-3'>
             <form className='flex w-full flex-col gap-3' onSubmit={handleSubmit}>
                <InputField name='name' type='text' value={payload.name} required placeholder={t('Name')} onChange={handleInputChange} />
                <InputField name='whatsapp' type='text' value={payload.whatsapp} required placeholder={t('PhoneNumber')} onChange={handleInputChange} />
                <InputField avail={af('email')} name='email' type='email' value={payload?.email || ''} placeholder={t('Email')} onChange={handleInputChange} />
-               
+
                {/* <InputField avail={af('qty')} name='qty' type='number' value={payload.qty} required placeholder={t('Quantity')} onChange={handleInputChange} /> */}
-               
+
                {isShowQtySelector && (
-                  <QtySelector onValueChange={(qty) => setPayload((prevPayload) => ({...prevPayload, qty: Number(qty) || 1}))} />
+                  <QtySelector onValueChange={(qty) => setPayload((prevPayload) => ({ ...prevPayload, qty: Number(qty) || 1 }))} />
                )}
 
-               <ShipmentForm
-                  key={refreshKey}
-                  country={country}
-                  storeID={storeID}
-                  productID={productID}
-                  onApply={(shipment) => handleApplyShipment(shipment)}
-               />
+               {af('city') && (
+                  <ShipmentForm
+                     key={refreshKey}
+                     country={country}
+                     storeID={storeID}
+                     productID={productID}
+                     onApply={(shipment) => handleApplyShipment(shipment)}
+                  />
+               )}
 
                {af('address') && (
                   <Textarea
@@ -148,7 +149,7 @@ const CheckoutForm = ({ inputFields, productID, storeID, country, currency, prod
                   />
                )}
 
-               <hr className='my-1 w-3/4 mx-auto'/>
+               <hr className='my-1 w-3/4 mx-auto' />
 
                <OrderSummary summary={summary} currency={currency} />
 
@@ -172,8 +173,8 @@ interface IInputField {
 }
 
 const InputField = (props: IInputField) => {
-   const {avail, ...inputProps} = props
-   if(avail === false) {
+   const { avail, ...inputProps } = props
+   if (avail === false) {
       return null
    }
    return <Input className='bg-white' {...inputProps} />
