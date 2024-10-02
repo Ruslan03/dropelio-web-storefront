@@ -14,7 +14,7 @@ const QtySelector = ({ onValueChange }: { onValueChange: (_: string) => void }) 
 
    return (
       <Select onValueChange={onValueChange}>
-         <SelectTrigger className="w-full bg-white h-12 text-base">
+         <SelectTrigger className="w-full text-gray-500 rtl:flex-row-reverse bg-white h-12 text-base">
             <SelectValue placeholder={t('Quantity')} />
          </SelectTrigger>
          <SelectContent>

@@ -75,7 +75,7 @@ const ShipmentForm = ({ productID, storeID, onApply, country }: IShipmentForm) =
             productID
          })
       }}>
-         <DrawerTrigger className='h-12 flex items-center text-left bg-white border rounded-md px-3'>
+         <DrawerTrigger className='h-12 flex items-center rtl:text-right ltr:text-left bg-white border rounded-md px-3'>
             {!cityName && <p className='flex-grow text-gray-500'>{t('Placeholder')}</p>}
             {cityName && <p className='flex-grow'>{cityName}</p>}
             <Search height={18} className='text-gray-400' />
