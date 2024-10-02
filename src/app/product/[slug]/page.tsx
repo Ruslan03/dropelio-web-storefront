@@ -74,6 +74,7 @@ const Page = async ({ params }: Props) => {
       title,
       sold,
       product_currency,
+      product_price,
       product_price_formatted,
       compare_at_price_formatted,
       product_images,
@@ -84,6 +85,8 @@ const Page = async ({ params }: Props) => {
       checkout_form: co_form,
       rating
    } = product
+
+   console.log(product)
 
    const isShowCoForm = co_mode === 'internal' && store?.co_on_preview == 1
    const inputFields = co_form?.split(',')
@@ -108,7 +111,9 @@ const Page = async ({ params }: Props) => {
                   country={store?.country}
                   storeID={store?.id}
                   productID={id}
+                  productPrice={product_price}
                   inputFields={inputFields}
+                  currency={product_currency}
                />
             )}
 

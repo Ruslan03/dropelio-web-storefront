@@ -39,5 +39,11 @@
          "ShippingCostLabel": "Shipping Cost",
          "CTASave": "Apply"
       }
+   },
+   "OrderSummary": {
+      "Title": "Ringkasan Order",
+      "Subtotal": "Subtotal",
+      "ShippingCost": "Shipping Cost",
+      "Total": "Total"
    }
 }

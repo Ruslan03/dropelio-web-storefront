@@ -7,7 +7,7 @@ import { postCheckout } from '@/app/lib/services';
 import { CircleCheckBig, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import ShipmentForm, { ShipmentType } from './shipment-form';
-import OrderDetail from './order-detail';
+import OrderSummary, { TypeSummary } from './order-summary';
 import QtySelector from './qty-selector';
 
 type Payload = {
@@ -25,21 +25,30 @@ interface ICheckoutForm {
    country: string
    inputFields: string[]
    productID: string
+   productPrice: number
    storeID: string
+   currency: string
 }
 
-const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutForm) => {
+const CheckoutForm = ({ inputFields, productID, storeID, country, currency, productPrice }: ICheckoutForm) => {
    const t = useTranslations('CheckoutForm')
 
    const [isShowSuccess, setIsShowSuccess] = useState(false)
    const [isLoading, setIsLoading] = useState(false)
    const [refreshKey, setRefreshKey] = useState(1)
 
+   const [shippingCost, setShippingCost] = useState<number | null>(0)
    const [payload, setPayload] = useState<Payload>({
       name: '',
       qty: 1,
       whatsapp: ''
    })
+
+   const summary: TypeSummary = {
+         qty: payload.qty,
+         price: productPrice,
+         shippingCost
+   }
 
    const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target
@@ -58,6 +67,7 @@ const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutFor
          city_name: shipment.city.name as string
       }))
 
+      setShippingCost(shipment?.cost || 0)
    }
 
    const handleSubmit = async (e: FormEvent) => {
@@ -75,7 +85,7 @@ const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutFor
             whatsapp: ''
          })
          setRefreshKey((prevKey) => prevKey + 1)
-
+         setShippingCost(null)
          setIsShowSuccess(true)
       }).catch((error) => {
          alert(error?.message || 'Something went wrong')
@@ -138,7 +148,9 @@ const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutFor
                   />
                )}
 
-               {/* <OrderDetail /> */}
+               <hr className='my-1 w-3/4 mx-auto'/>
+
+               <OrderSummary summary={summary} currency={currency} />
 
                <button type='submit' disabled={isLoading} className={`${isShowSuccess ? 'bg-gray-300' : 'bg-gradient-to-t from-blue-600  to-blue-500'} active:opacity-75 transition-all ease-in-out duration-75 text-white text-center flex justify-center disabled:from-blue-500 disabled:to-blue-400 shadow-sm w-full mt-2 text-base font-bold p-3 rounded-md`}>
                   {!isLoading ? t('ButtonSubmit') : <LoaderCircle className='animate-spin' strokeWidth={3} />}

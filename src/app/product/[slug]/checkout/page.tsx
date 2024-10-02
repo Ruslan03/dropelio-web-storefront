@@ -61,6 +61,7 @@ const Page = async ({ params }: Props) => {
       title,
       store,
       product_currency,
+      product_price,
       product_price_formatted,
       compare_at_price_formatted,
       product_features,
@@ -86,6 +87,8 @@ const Page = async ({ params }: Props) => {
                productID={id}
                storeID={store?.id}
                inputFields={inputFields}
+               productPrice={product_price}
+               currency={product_currency}
             />
          </div>
          <BaseFooter />
