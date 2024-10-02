@@ -90,7 +90,7 @@ const Page = async ({ params }: Props) => {
    
    return (
       <BaseContainer>
-         <div className='flex flex-col gap-6 mb-8'>
+         <div className='flex flex-col gap-8 mb-8'>
             <div className='flex flex-col items-start gap-2'>
                <h1 className='text-2xl md:text-3xl font-semibold'>{title}</h1>
 

@@ -29,6 +29,7 @@ interface ICheckoutForm {
 const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutForm) => {
    const [isShowSuccess, setIsShowSuccess] = useState(false)
    const [isLoading, setIsLoading] = useState(false)
+   const [refreshKey, setRefreshKey] = useState(1)
 
    const [payload, setPayload] = useState<Payload>({
       name: '',
@@ -69,6 +70,7 @@ const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutFor
             qty: 1,
             whatsapp: ''
          })
+         setRefreshKey((prevKey) => prevKey + 1)
 
          setIsShowSuccess(true)
       }).catch((error) => {
@@ -98,6 +100,7 @@ const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutFor
                <InputField name='whatsapp' type='text' value={payload.whatsapp} required placeholder={t('PhoneNumber')} onChange={handleInputChange} />
 
                <ShipmentForm
+                  key={refreshKey}
                   country={country}
                   storeID={storeID}
                   productID={productID}
@@ -107,7 +110,7 @@ const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutFor
                {af('address') && (
                   <Textarea
                      name='address'
-                     className='bg-white'
+                     className='bg-white min-h-24'
                      placeholder={t('Address')}
                      onChange={handleInputChange}
                      value={payload?.address || ''}
@@ -119,7 +122,7 @@ const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutFor
                {af('notes') && (
                   <Textarea
                      name='note'
-                     className='bg-white'
+                     className='bg-white min-h-24'
                      placeholder={t('Notes')}
                      onChange={handleInputChange}
                      value={payload?.note || ''}

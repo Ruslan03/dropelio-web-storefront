@@ -16,7 +16,7 @@ const CitySelector = ({ isLoading, cities, value, onChange }: ICitySelector) => 
       <ScrollArea className="mb-3 h-48 w-full rounded-md border">
          {isLoading && Array.from(new Array(4)).map((_, i) => (
             <div key={i} className='w-full border-b px-4 py-3 flex items-center justify-between'>
-               <div className='h-4 bg-muted w-80 animate-pulse rounded-md' />
+               <div className='h-4 bg-muted w-56 md:w-80 animate-pulse rounded-md' />
                <div className='h-4 w-5 bg-muted animate-pulse rounded-md' />
             </div>
          ))}
