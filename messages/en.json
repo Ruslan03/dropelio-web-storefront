@@ -20,24 +20,24 @@
       "SuccessMessage": "Thank you! Your order is on the move! We’ll contact you soon."
    },
    "ShipmentForm": {
-      "Placeholder": "Pilih alamat pengiriman...",
+      "Placeholder": "Select a shipping address...",
       "Header": {
-         "Title": "Alamat Pengiriman",
-         "SubTitle": "Pilih alamat pengiriman"
+         "Title": "Address Information",
+         "SubTitle": "Please ensure your data is correct for fast delivery."
       },
       "Body": {
-         "SearchCityPlaceholder": "Cari kota/kabupaten...",
-         "NoShippingAddress": "Tidak ada alamat pengiriman",
+         "SearchCityPlaceholder": "Search city/district...",
+         "NoShippingAddress": "No shipping address",
          "Algeria": {
             "SelectStateLabel": "State (Wilaya)",
-            "SelectStatePlaceholder": "Pilih state...",
+            "SelectStatePlaceholder": "Select state...",
             "CityLabel": "City (Commune)"
          }
       },
       "Footer": {
-         "DeliveryCityLabel": "Kota Pengiriman",
-         "ShippingCostLabel": "Ongkos Pengiriman",
-         "CTASave": "Terapkan"
+         "DeliveryCityLabel": "Delivery City",
+         "ShippingCostLabel": "Shipping Cost",
+         "CTASave": "Apply"
       }
    }
 }

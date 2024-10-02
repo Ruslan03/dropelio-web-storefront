@@ -20,24 +20,24 @@
       "SuccessMessage": "Merci pour votre commande ! Le produit sera expédié aujourd'hui et il faudra généralement entre 2 et 5 jours pour vous parvenir. Veuillez garder votre téléphone allumé afin que le livreur puisse vous contacter."
    },
    "ShipmentForm": {
-      "Placeholder": "Pilih alamat pengiriman...",
+      "Placeholder": "Adresse de livraison...",
       "Header": {
-         "Title": "Alamat Pengiriman",
-         "SubTitle": "Pilih alamat pengiriman"
+         "Title": "Adresse de livraison",
+         "SubTitle": "Veuillez vérifier que vos données sont correctes pour une livraison rapide."
       },
       "Body": {
-         "SearchCityPlaceholder": "Cari kota/kabupaten...",
-         "NoShippingAddress": "Tidak ada alamat pengiriman",
+         "SearchCityPlaceholder": "Rechercher ville/commune...",
+         "NoShippingAddress": "Aucune adresse de livraison",
          "Algeria": {
-            "SelectStateLabel": "State (Wilaya)",
-            "SelectStatePlaceholder": "Pilih state...",
-            "CityLabel": "City (Commune)"
+            "SelectStateLabel": "ville (Wilaya)",
+            "SelectStatePlaceholder": "Sélectionnez ville",
+            "CityLabel": "Commune"
          }
       },
       "Footer": {
-         "DeliveryCityLabel": "Kota Pengiriman",
-         "ShippingCostLabel": "Ongkos Pengiriman",
-         "CTASave": "Terapkan"
+         "DeliveryCityLabel": "Ville de livraison",
+         "ShippingCostLabel": "Coût de livraison",
+         "CTASave": "Appliquer"
       }
    }
 }

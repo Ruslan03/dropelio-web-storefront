@@ -20,24 +20,24 @@
       "SuccessMessage": "شكرا على طلبك, سيتم معالجة طلبك قريبا وإرساله لك, يرجى إبقاء هاتفك شغال حتى يتمكن موزعنا من التواصل معك, أي إلغاء للطلب يسبب لنا خسارة كبيرة"
    },
    "ShipmentForm": {
-      "Placeholder": "Pilih alamat pengiriman...",
+      "Placeholder": "إختر عنوان للتوصيل...",
       "Header": {
-         "Title": "Alamat Pengiriman",
-         "SubTitle": "Pilih alamat pengiriman"
+         "Title": "معلومات التوصيل",
+         "SubTitle": "يرجى إدخال معلومات صحيحة من أجل التوصيل السريع"
       },
       "Body": {
-         "SearchCityPlaceholder": "Cari kota/kabupaten...",
-         "NoShippingAddress": "Tidak ada alamat pengiriman",
+         "SearchCityPlaceholder": "أختر عن الولاية أو البلدية",
+         "NoShippingAddress": "معلومات التوصيل غير متوفرة",
          "Algeria": {
-            "SelectStateLabel": "State (Wilaya)",
-            "SelectStatePlaceholder": "Pilih state...",
-            "CityLabel": "City (Commune)"
+            "SelectStateLabel": "الولاية - Wilaya",
+            "SelectStatePlaceholder": "إختر الولاية - Wilaya",
+            "CityLabel": "البلدية - Commune"
          }
       },
       "Footer": {
-         "DeliveryCityLabel": "Kota Pengiriman",
-         "ShippingCostLabel": "Ongkos Pengiriman",
-         "CTASave": "Terapkan"
+         "DeliveryCityLabel": "التوصيل إلى",
+         "ShippingCostLabel": "سعر التوصيل",
+         "CTASave": "أرسل المعلومات"
       }
    }
 }
