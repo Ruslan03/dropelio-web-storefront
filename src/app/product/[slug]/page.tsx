@@ -70,6 +70,7 @@ const Page = async ({ params }: Props) => {
 
    const {
       id,
+      store,
       title,
       sold,
       product_currency,
@@ -81,12 +82,11 @@ const Page = async ({ params }: Props) => {
       checkout_mode: co_mode,
       checkout_link: co_link,
       checkout_form: co_form,
-      store
+      rating
    } = product
 
    const isShowCoForm = co_mode === 'internal' && store?.co_on_preview == 1
    const inputFields = co_form?.split(',')
-   const ratings = product_reviews.map((review: any) => Math.max(Number(review.rating) || 0), 5)
    
    return (
       <BaseContainer>
@@ -97,7 +97,7 @@ const Page = async ({ params }: Props) => {
                <Price currency={product_currency} price={product_price_formatted} compare={compare_at_price_formatted} />
 
                <div className='mt-3'>
-                  <BadgeRating sold={sold} ratings={ratings} />
+                  <BadgeRating sold={sold} rating={rating} />
                </div>
             </div>
 
