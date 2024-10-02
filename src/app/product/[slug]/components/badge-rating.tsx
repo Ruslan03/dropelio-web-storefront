@@ -1,3 +1,4 @@
+import { currencyFormat } from '@/app/lib/client/currency-format'
 import { Star } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import React from 'react'
@@ -10,7 +11,7 @@ const BadgeRating = ({ sold, rating }: { sold: number, rating: number }) => {
 
    return (
       <div className='flex items-center gap-3'>
-         <div className='px-2 text-sm font-semibold rounded-md bg-amber-400'>{`${sold} ${t('BadgeSold')}`}</div>
+         <div className='px-2 text-sm font-semibold rounded-md bg-amber-400'>{`${currencyFormat(sold)} ${t('BadgeSold')}`}</div>
          <div className='flex items-center'>
             {Array.from(new Array(fullStar)).map((_, i) => (
                <svg key={i} xmlns="http://www.w3.org/2000/svg" className="text-yellow-400 w-4 h-auto fill-current"
