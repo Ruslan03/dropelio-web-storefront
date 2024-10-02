@@ -7,6 +7,8 @@ import { postCheckout } from '@/app/lib/services';
 import { CircleCheckBig, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import ShipmentForm, { ShipmentType } from './shipment-form';
+import OrderDetail from './order-detail';
+import QtySelector from './qty-selector';
 
 type Payload = {
    name: string
@@ -27,6 +29,8 @@ interface ICheckoutForm {
 }
 
 const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutForm) => {
+   const t = useTranslations('CheckoutForm')
+
    const [isShowSuccess, setIsShowSuccess] = useState(false)
    const [isLoading, setIsLoading] = useState(false)
    const [refreshKey, setRefreshKey] = useState(1)
@@ -79,7 +83,7 @@ const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutFor
    }
 
    const af = (field: string) => inputFields.indexOf(field) > -1
-   const t = useTranslations('CheckoutForm')
+   const isShowQtySelector = af('qty')
 
    return (
       <div className='relative bg-gradient-to-tr from-gray-100  to-gray-50 border-[1px] border-gray-200 p-4 rounded-md'>
@@ -98,6 +102,13 @@ const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutFor
             <form className='flex w-full flex-col gap-3' onSubmit={handleSubmit}>
                <InputField name='name' type='text' value={payload.name} required placeholder={t('Name')} onChange={handleInputChange} />
                <InputField name='whatsapp' type='text' value={payload.whatsapp} required placeholder={t('PhoneNumber')} onChange={handleInputChange} />
+               <InputField avail={af('email')} name='email' type='email' value={payload?.email || ''} placeholder={t('Email')} onChange={handleInputChange} />
+               
+               {/* <InputField avail={af('qty')} name='qty' type='number' value={payload.qty} required placeholder={t('Quantity')} onChange={handleInputChange} /> */}
+               
+               {isShowQtySelector && (
+                  <QtySelector onValueChange={(qty) => setPayload((prevPayload) => ({...prevPayload, qty: Number(qty) || 1}))} />
+               )}
 
                <ShipmentForm
                   key={refreshKey}
@@ -116,8 +127,6 @@ const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutFor
                      value={payload?.address || ''}
                   />
                )}
-               <InputField avail={af('qty')} name='qty' type='number' value={payload.qty} required placeholder={t('Quantity')} onChange={handleInputChange} />
-               <InputField avail={af('email')} name='email' type='email' value={payload?.email || ''} placeholder={t('Email')} onChange={handleInputChange} />
 
                {af('notes') && (
                   <Textarea
@@ -128,6 +137,8 @@ const CheckoutForm = ({ inputFields, productID, storeID, country }: ICheckoutFor
                      value={payload?.note || ''}
                   />
                )}
+
+               {/* <OrderDetail /> */}
 
                <button type='submit' disabled={isLoading} className={`${isShowSuccess ? 'bg-gray-300' : 'bg-gradient-to-t from-blue-600  to-blue-500'} active:opacity-75 transition-all ease-in-out duration-75 text-white text-center flex justify-center disabled:from-blue-500 disabled:to-blue-400 shadow-sm w-full mt-2 text-base font-bold p-3 rounded-md`}>
                   {!isLoading ? t('ButtonSubmit') : <LoaderCircle className='animate-spin' strokeWidth={3} />}

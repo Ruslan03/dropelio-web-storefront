@@ -2,14 +2,11 @@ import React, { useCallback, useContext, useEffect, useState } from 'react'
 import {
    Select,
    SelectContent,
-   SelectGroup,
    SelectItem,
-   SelectLabel,
    SelectTrigger,
    SelectValue,
 } from "@/components/ui/select"
 
-import useDebounce from '@/app/lib/client/hooks/use-debounce'
 import { getAlgeriaCities, getAlgeriaStates, getShippingCities, getShippingCost } from '@/services/shipping'
 import { ShipmentFormContext } from '..'
 import CitySelector from '../city-selector'
