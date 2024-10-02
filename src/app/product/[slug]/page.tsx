@@ -86,8 +86,6 @@ const Page = async ({ params }: Props) => {
       rating
    } = product
 
-   console.log(product)
-
    const isShowCoForm = co_mode === 'internal' && store?.co_on_preview == 1
    const inputFields = co_form?.split(',')
    
