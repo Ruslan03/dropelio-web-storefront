@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Suspense, useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { getProducts } from '../../lib/services'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -39,7 +39,6 @@ const ProductList = () => {
    }, [page, fetchProduct, router])
 
    return (
-      <Suspense>
          <div>
             {!isLoading && (
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 min-h-96">
@@ -58,7 +57,6 @@ const ProductList = () => {
                <ProductPagination currentPage={page} totalPage={Math.ceil(total / 6)} onPageChange={(newPage) => setPage(newPage)} />
             </div>
          </div>
-      </Suspense>
    )
 }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import BaseContainer from './components/container'
 import BaseFooter from './components/footer'
 import { getStore } from './lib/services'
@@ -12,7 +12,9 @@ const Page = async () => {
       <BaseContainer>
          <h1 className="font-bold text-3xl md:text-4xl text-black mb-8 max-xl:text-center">{store?.name}</h1>
          
-         <ProductList />
+         <Suspense>
+            <ProductList />
+         </Suspense>
 
          <BaseFooter />
       </BaseContainer>
