@@ -79,6 +79,7 @@ const ProductItem = ({ product }: { product: any }) => {
                style={{
                   objectFit: 'cover',
                }}
+               quality={25}
             />
          </div>
          <div
