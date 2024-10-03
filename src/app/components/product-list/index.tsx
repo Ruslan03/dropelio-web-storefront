@@ -93,7 +93,7 @@ const ProductItem = ({ product }: { product: any }) => {
    )
 }
 
-const LoadingPlaceholder = () => {
+export const LoadingPlaceholder = () => {
    return (
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
