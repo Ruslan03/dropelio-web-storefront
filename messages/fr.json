@@ -1,6 +1,9 @@
 {
    "General": {
-      "CashOnDelivery": "Paiement à la livraison"
+      "CashOnDelivery": "Paiement à la livraison",
+      "PrivacyPolicy": "Kebijakan Privasi",
+      "TermOfService": "Syarat dan Ketentuan Layanan",
+      "RefundPolicy": "Kebijakan Pengembalian"
    },
    "ProductReview": {
       "BadgeSold": "Vendu",

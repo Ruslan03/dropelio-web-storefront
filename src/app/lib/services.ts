@@ -113,3 +113,22 @@ export const getProducts = async ({ params }: { params: { page: string } }) => {
       return []
    }
 }
+
+export const getPageData = async ({ type }: { type: 'term' | 'privacy' | 'return' }) => {
+
+   try {
+      const baseUrl = getBaseApiURL()
+      const res = await fetch(`${baseUrl}/storefront/page/${type}`, { next: { revalidate: 60 } });
+
+      if (res.status === 200) {
+         const json = await res.json();
+
+         return json?.payload?.content || ''
+      }
+
+      return ''
+
+   } catch (err) {
+      return ''
+   }
+}

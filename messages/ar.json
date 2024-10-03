@@ -1,6 +1,9 @@
 {
    "General": {
-      "CashOnDelivery": "الدفع عند الاستلام"
+      "CashOnDelivery": "الدفع عند الاستلام",
+      "PrivacyPolicy": "Kebijakan Privasi",
+      "TermOfService": "Syarat dan Ketentuan Layanan",
+      "RefundPolicy": "Kebijakan Pengembalian"
    },
    "ProductReview": {
       "BadgeSold": "مبيعة",

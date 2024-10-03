@@ -1,6 +1,9 @@
 {
    "General": {
-      "CashOnDelivery": "Bayar di Tempat"
+      "CashOnDelivery": "Bayar di Tempat",
+      "PrivacyPolicy": "Kebijakan Privasi",
+      "TermOfService": "Syarat dan Ketentuan Layanan",
+      "RefundPolicy": "Kebijakan Pengembalian"
    },
    "ProductReview": {
       "BadgeSold": "Terjual",

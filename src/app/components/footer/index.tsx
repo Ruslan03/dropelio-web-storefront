@@ -1,4 +1,6 @@
+import { ExternalLink } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 interface BaseFooter {
@@ -6,19 +8,26 @@ interface BaseFooter {
 
 const BaseFooter: React.FC<BaseFooter> = () => {
    return (
-      <div className='flex flex-col items-center justify-center h-32'>
-         <p className='text-sm'>Powered By</p>
-         <Image
-            src={'/dropelio-logo.png'}
-            alt='logo'
-            priority
-            width={140}
-            height={28}
-            sizes='140px'
-            style={{
-               height: 'auto',
-            }}
-         />
+      <div className='flex flex-col items-center justify-center h-32 border-t border-opacity-0'>
+         <ul className='flex gap-4 items-center text-sm'>
+            <li className='hover:underline'><Link href={'/term-of-service'}>Term of Services</Link></li>
+            <li className='hover:underline'><Link href={'/privacy-policy'}>Privacy Policy</Link></li>
+            <li className='hover:underline'><Link href={'/refund-policy'}>Refund Policy</Link></li>
+         </ul>
+         <p className='text-xs mt-3'>Powered By:</p>
+         <Link href={'https://dropelio.shop'} target='_blank'>
+            <Image
+               src={'/dropelio-logo.png'}
+               alt='logo'
+               priority
+               width={140}
+               height={28}
+               sizes='140px'
+               style={{
+                  height: 'auto',
+               }}
+            />
+         </Link>
       </div>
    )
 }
