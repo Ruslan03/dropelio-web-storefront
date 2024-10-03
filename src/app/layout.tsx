@@ -19,7 +19,7 @@ export const viewport: Viewport = {
    initialScale: 1,
    maximumScale: 1,
    userScalable: false,
- }
+}
 
 export default async function RootLayout({
    children,
@@ -36,11 +36,9 @@ export default async function RootLayout({
 
    return (
       <html lang={locale} dir={dir}>
-         <body>
+         <body className={locale === 'ar' ? cairo.className : ''}>
             <NextIntlClientProvider messages={messages}>
-               <main className={locale === 'ar' ? cairo.className: ''}>
-                  {children}
-               </main>
+               {children}
             </NextIntlClientProvider>
          </body>
       </html>

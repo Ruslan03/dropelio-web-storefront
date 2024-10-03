@@ -72,7 +72,7 @@ export const getStore = async () => {
 
    try {
       const baseUrl = getBaseApiURL()
-      const res = await fetch(`${baseUrl}/storefront/my-store`, { next: { revalidate: 0 } });
+      const res = await fetch(`${baseUrl}/storefront/my-store`, { next: { revalidate: 120 } });
 
       if (res.status === 200) {
          const json = await res.json();
@@ -92,5 +92,23 @@ export const getStore = async () => {
    } catch (err) {
 
       return null
+   }
+}
+
+export const getProducts = async ({ page }: { page: number }) => {
+
+   try {
+      const baseUrl = getBaseApiURL()
+      const res = await fetch(`${baseUrl}/storefront/product`, { next: { revalidate: 0 } });
+
+      if (res.status === 200) {
+         const json = await res.json();
+         return json?.payload || []
+      }
+
+      return []
+
+   } catch (err) {
+      return []
    }
 }
