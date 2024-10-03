@@ -5,6 +5,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 import "./globals.css";
 import { getStore } from "./lib/services";
 import { Viewport } from 'next';
+import { notFound } from 'next/navigation';
 
 
 const cairo = Cairo({
@@ -13,6 +14,21 @@ const cairo = Cairo({
    subsets: ['latin'],
    display: 'swap',
 })
+
+export async function generateMetadata() {
+
+   const store = await getStore()
+
+   if (!store) {
+      notFound()
+   }
+
+
+   return {
+      title: store.name,
+      description: `Dropelio | ${store.name}`,
+   }
+}
 
 export const viewport: Viewport = {
    width: 'device-width',
