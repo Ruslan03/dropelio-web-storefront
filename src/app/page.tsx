@@ -10,7 +10,7 @@ const Page = async () => {
 
    return (
       <BaseContainer>
-         <h2 className="font-bold text-3xl md:text-4xl text-black mb-8 max-xl:text-center">{store?.name}</h2>
+         <h1 className="font-bold text-3xl md:text-4xl text-black mb-8 max-xl:text-center">{store?.name}</h1>
          
          <ProductList />
 
