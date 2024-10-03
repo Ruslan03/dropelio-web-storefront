@@ -12,6 +12,7 @@ import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { LoadingSkeleton } from './components/description'
 import { baseUrl } from '@/app/lib/base-path'
+import BadgeStore from './components/store'
 
 const CheckoutForm = dynamic(() => import('./components/checkout-form'), {
    ssr: false,
@@ -97,8 +98,9 @@ const Page = async ({ params }: Props) => {
 
                <Price currency={product_currency} price={product_price_formatted} compare={compare_at_price_formatted} />
 
-               <div className='mt-3'>
+               <div className='mt-3 flex items-center gap-2'>
                   <BadgeRating sold={sold} rating={rating} />
+                  <BadgeStore  storeName={store?.name}/>
                </div>
             </div>
 

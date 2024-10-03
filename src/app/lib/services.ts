@@ -95,11 +95,12 @@ export const getStore = async () => {
    }
 }
 
-export const getProducts = async ({ page }: { page: number }) => {
+export const getProducts = async ({ params }: { params: { page: string } }) => {
 
    try {
       const baseUrl = getBaseApiURL()
-      const res = await fetch(`${baseUrl}/storefront/product`, { next: { revalidate: 0 } });
+      const createParams = new URLSearchParams(params).toString()
+      const res = await fetch(`${baseUrl}/storefront/product?${createParams}`, { next: { revalidate: 0 } });
 
       if (res.status === 200) {
          const json = await res.json();

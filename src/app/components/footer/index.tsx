@@ -11,6 +11,7 @@ const BaseFooter: React.FC<BaseFooter> = () => {
          <Image
             src={'/dropelio-logo.png'}
             alt='logo'
+            priority
             width={140}
             height={28}
             sizes='140px'

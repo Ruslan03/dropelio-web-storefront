@@ -8,6 +8,8 @@ import BannerCOD from '../components/banner-cod'
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { baseUrl } from '@/app/lib/base-path'
+import BadgeRating from '../components/badge-rating'
+import BadgeStore from '../components/store'
 
 const CheckoutForm = dynamic(() => import('../components/checkout-form'), {
    ssr: false,
@@ -60,6 +62,8 @@ const Page = async ({ params }: Props) => {
       id,
       title,
       store,
+      sold,
+      rating,
       product_currency,
       product_price,
       product_price_formatted,
@@ -76,6 +80,11 @@ const Page = async ({ params }: Props) => {
             <div className='flex flex-col items-start gap-2'>
                <h1 className='text-2xl md:text-3xl font-semibold'>{title}</h1>
                <Price currency={product_currency} price={product_price_formatted} compare={compare_at_price_formatted} />
+
+               <div className='mt-3 flex items-center gap-2'>
+                  <BadgeRating sold={sold} rating={rating} />
+                  <BadgeStore  storeName={store?.name}/>
+               </div>
             </div>
 
             <BannerCOD />

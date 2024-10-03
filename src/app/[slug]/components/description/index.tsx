@@ -53,22 +53,24 @@ const Description = ({ productID }: { productID: string }) => {
                   )
                }
 
+               return node
+
             }
 
             const options = {
-               decodeEntities: true,
+               // decodeEntities: true,
                replace: transformNode,
             };
 
             const parseDescription = parse(res, options);
-            setDescription(parseDescription);
+            setDescription(Array.isArray(parseDescription) ? parseDescription: [parseDescription]);
          }).finally(() => setIsLoading(false))
       }
    }, [productID])
 
    return (
       <div className={styles.description}>
-         {description.map((element: any, i: number) => {
+         {description?.map((element: any, i: number) => {
             return <div key={i}>{element}</div>;
          })}
       </div>
