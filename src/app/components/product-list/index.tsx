@@ -39,24 +39,24 @@ const ProductList = () => {
    }, [page, fetchProduct, router])
 
    return (
-         <div>
-            {!isLoading && (
-               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 min-h-96">
-                  {products.map((product) => (
-                     <ProductItem key={product?.id} product={product} />
-                  ))}
+      <div>
+         {!isLoading && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 min-h-96">
+               {products.map((product) => (
+                  <ProductItem key={product?.id} product={product} />
+               ))}
 
-               </div>
-            )}
-
-            {isLoading && (
-               <LoadingPlaceholder />
-            )}
-
-            <div className='my-8'>
-               <ProductPagination currentPage={page} totalPage={Math.ceil(total / 6)} onPageChange={(newPage) => setPage(newPage)} />
             </div>
+         )}
+
+         {isLoading && (
+            <LoadingPlaceholder />
+         )}
+
+         <div className='my-8'>
+            <ProductPagination currentPage={page} totalPage={Math.ceil(total / 6)} onPageChange={(newPage) => setPage(newPage)} />
          </div>
+      </div>
    )
 }
 
@@ -65,15 +65,15 @@ const ProductItem = ({ product }: { product: any }) => {
    return (
       <Link href={`${product?.slug}`}
          className="relative w-full aspect-square bg-cover group rounded-2xl sm:rounded-3xl bg-center overflow-hidden mx-auto sm:mr-0 xl:mx-auto active:opacity-75 transition-all ease-in-out">
-         {isLoadingImage && (
-            <div className='w-full h-full bg-gray-200 animate-pulse' />
-         )}
          <div className='w-full h-full relative'>
+            {isLoadingImage && (
+               <div className='w-full h-full bg-gray-100 animate-pulse' />
+            )}
             <Image
                src={baseUrl(`storage/${product?.product_images?.[0].image_path}`)}
                alt={product?.title}
                fill
-               sizes='100vh'
+               sizes='100vw'
                priority
                onLoad={() => setIsLoadingImage(false)}
                style={{
