@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { Suspense, useCallback, useEffect, useState } from 'react'
 import { getProducts } from '../../lib/services'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -39,24 +39,26 @@ const ProductList = () => {
    }, [page, fetchProduct, router])
 
    return (
-      <div>
-         {!isLoading && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 min-h-96">
-               {products.map((product) => (
-                  <ProductItem key={product?.id} product={product} />
-               ))}
+      <Suspense>
+         <div>
+            {!isLoading && (
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 min-h-96">
+                  {products.map((product) => (
+                     <ProductItem key={product?.id} product={product} />
+                  ))}
 
+               </div>
+            )}
+
+            {isLoading && (
+               <LoadingPlaceholder />
+            )}
+
+            <div className='my-8'>
+               <ProductPagination currentPage={page} totalPage={Math.ceil(total / 6)} onPageChange={(newPage) => setPage(newPage)} />
             </div>
-         )}
-
-         {isLoading && (
-            <LoadingPlaceholder />
-         )}
-
-         <div className='my-8'>
-            <ProductPagination currentPage={page} totalPage={Math.ceil(total / 6)} onPageChange={(newPage) => setPage(newPage)} />
          </div>
-      </div>
+      </Suspense>
    )
 }
 
@@ -73,6 +75,7 @@ const ProductItem = ({ product }: { product: any }) => {
                src={baseUrl(`storage/${product?.product_images?.[0].image_path}`)}
                alt={product?.title}
                fill
+               sizes='100vh'
                priority
                onLoad={() => setIsLoadingImage(false)}
                style={{
