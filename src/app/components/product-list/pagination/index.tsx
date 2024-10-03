@@ -20,11 +20,11 @@ const ProductPagination = ({ currentPage, totalPage, onPageChange }: IProductPag
       <Pagination >
          <PaginationContent>
             <PaginationItem onClick={() => onPageChange(1)}>
-               <PaginationPrevious href="#" />
+               <PaginationPrevious />
             </PaginationItem>
             {generatePaginationLinks(currentPage, totalPage, onPageChange)}
             <PaginationItem onClick={() => onPageChange(totalPage)}>
-               <PaginationNext href="#" />
+               <PaginationNext />
             </PaginationItem>
          </PaginationContent>
       </Pagination>
