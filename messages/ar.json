@@ -38,13 +38,13 @@
       }
    },
    "ShipmentForm": {
-      "Placeholder": "إختر عنوان للتوصيل...",
+      "Placeholder": "إضغط هنا لإدخال عنوان للتوصيل...",
       "Header": {
          "Title": "معلومات التوصيل",
          "SubTitle": "يرجى إدخال معلومات صحيحة من أجل التوصيل السريع"
       },
       "Body": {
-         "SearchCityPlaceholder": "أختر عن الولاية أو البلدية",
+         "SearchCityPlaceholder": "أختر الولاية و البلدية",
          "NoShippingAddress": "معلومات التوصيل غير متوفرة",
          "Algeria": {
             "SelectStateLabel": "الولاية - Wilaya",
