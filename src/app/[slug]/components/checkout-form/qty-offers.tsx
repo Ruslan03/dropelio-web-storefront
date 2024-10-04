@@ -25,7 +25,14 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
 
    return (
       <div className='relative'>
-         <input name='qty' value={selected} className='absolute left-0 top-0 opacity-0' type='text' required onChange={() => {}} />
+         <label className='absolute left-0 top-0 opacity-0'>
+            <input name='qty'
+               value={selected}
+               type='text'
+               required
+               onChange={() => { }}
+            />
+         </label>
          <RadioGroup value={selected} onValueChange={handleOnChange} className='flex flex-col gap-4'>
             {offers.map((offer, i) => {
 
@@ -38,7 +45,7 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
 
                return (
                   <div key={i} className="ltr:flex gap-3 items-center relative bg-white p-3 border rounded-md">
-                     <RadioGroupItem id={`offer-${i}`} value={JSON.stringify(offer)} />
+                     <RadioGroupItem id={`offer-${i}`} aria-label={`offer-${i}`} value={JSON.stringify(offer)} />
                      <label
                         htmlFor={`offer-${i}`}
                         className="text-sm flex-grow cursor-pointer "

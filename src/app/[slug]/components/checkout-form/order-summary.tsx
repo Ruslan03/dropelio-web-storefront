@@ -14,24 +14,24 @@ const OrderSumamry = ({ summary, currency }: { summary: TypeSummary, currency: s
 
    const t = useTranslations('OrderSummary')
 
-   const {qty, price, shippingCost, discount, grandTotal} = summary
+   const { qty, price, shippingCost, discount, grandTotal } = summary
 
    const subTotalLabel = `${t('Subtotal')} (${currencyFormat(price)} x ${qty})`
    const subTotalValue = qty * price
 
    return (
       <div>
-         <h3 className='font-semibold text-[16px] mb-2'>{t('Title')}</h3>
+         <h3 className='font-semibold text-[16px]'>{t('Title')}</h3>
 
-      <div className='bg-white border rounded-md p-3'>
+         <div className='bg-white border rounded-md p-3 mt-3'>
 
-         <div className='flex flex-col gap-3 mt-3'>
-            <TotalItem label={subTotalLabel} value={currencyFormat(subTotalValue, currency)} />
-            <TotalItem label={t('ShippingCost')} value={shippingCost ? currencyFormat(shippingCost, currency) : '-'} />
-            <TotalItem label={t('Discount')} value={discount ? currencyFormat(discount, currency) : '-'} />
-            <TotalItem label={t('Total')} value={currencyFormat(grandTotal, currency)} isHighlight={true} />
+            <div className='flex flex-col gap-3 mt-3'>
+               <TotalItem label={subTotalLabel} value={currencyFormat(subTotalValue, currency)} />
+               <TotalItem label={t('ShippingCost')} value={shippingCost ? currencyFormat(shippingCost, currency) : '-'} />
+               <TotalItem label={t('Discount')} value={discount ? currencyFormat(discount, currency) : '-'} />
+               <TotalItem label={t('Total')} value={currencyFormat(grandTotal, currency)} isHighlight={true} />
+            </div>
          </div>
-      </div>
       </div>
    )
 }

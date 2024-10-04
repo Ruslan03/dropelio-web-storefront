@@ -9,7 +9,7 @@ import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { baseUrl } from '@/app/lib/base-path'
 import BadgeRating from '../components/badge-rating'
-import BadgeStore from '../components/store'
+import BadgeStore from '../components/badge-store'
 
 const CheckoutForm = dynamic(() => import('../components/checkout-form'), {
    ssr: false,

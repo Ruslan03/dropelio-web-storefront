@@ -202,7 +202,7 @@ const CheckoutForm = (props: ICheckoutForm) => {
                   <>
                   <hr className='my-1 w-full mx-auto' />
                      <div className='flex gap-1'>
-                        <h2 className='font-semibold text-[16px] mb-2'>{t('Offer.Title')}</h2>
+                        <h2 className='font-semibold text-[16px]'>{t('Offer.Title')}</h2>
                      </div>
 
 

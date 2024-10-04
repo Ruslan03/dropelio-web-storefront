@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { LoadingSkeleton } from './components/description'
 import { baseUrl } from '@/app/lib/base-path'
-import BadgeStore from './components/store'
+import BadgeStore from './components/badge-store'
 
 const CheckoutForm = dynamic(() => import('./components/checkout-form'), {
    ssr: false,
