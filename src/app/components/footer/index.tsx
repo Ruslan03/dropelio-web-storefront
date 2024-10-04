@@ -29,10 +29,10 @@ const BaseFooter: React.FC<BaseFooter> = () => {
             />
          </Link>
 
-         <ul className='flex gap-2 sm:gap-8 items-center text-sm mt-3'>
+         <ul className='px-2 flex-wrap flex gap-2 sm:gap-8 items-center justify-center text-sm mt-4'>
             <li className='whitespace-nowrap line-clamp-1 hover:underline'><Link href={'/term-of-service'}>{t('TermOfService')}</Link></li>
             <li className='whitespace-nowrap line-clamp-1 hover:underline'><Link href={'/privacy-policy'}>{t('PrivacyPolicy')}</Link></li>
-            <li className='whitespace-nowrap line-clamp-1 hover:underline'><Link href={'/refund-policy'}>{t('PrivacyPolicy')}</Link></li>
+            <li className='whitespace-nowrap line-clamp-1 hover:underline'><Link href={'/refund-policy'}>{t('RefundPolicy')}</Link></li>
          </ul>
       </div>
    )
