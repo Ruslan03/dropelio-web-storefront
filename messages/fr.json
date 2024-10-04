@@ -11,7 +11,7 @@
       "CTAButtonCheckout": "Commandez maintenant"
    },
    "CheckoutForm": {
-      "Title": "Checkout Form",
+      "Title": "Formulaire de commande",
       "Name": "Votre nom",
       "PhoneNumber": "Votre numéro Tel",
       "City": "Sélectionner la ville",
