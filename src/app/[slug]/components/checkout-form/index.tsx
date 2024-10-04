@@ -141,7 +141,9 @@ const CheckoutForm = (props: ICheckoutForm) => {
    const isShowOffer = isShowQtyOffers
 
    useEffect(() => {
-      trackPageViewEvent(pixelID)
+      setTimeout(() => {
+         trackPageViewEvent(pixelID)
+      }, 3000)
    }, [pixelID])
 
    return (
