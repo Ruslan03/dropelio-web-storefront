@@ -12,18 +12,18 @@
    },
    "CheckoutForm": {
       "Title": "Checkout Form",
-      "Name": "Your name",
-      "PhoneNumber": "Your Phone / Whatsapp number",
+      "Name": "Your name..",
+      "PhoneNumber": "Your Phone Or Whatsapp number",
       "City": "Select city",
       "Address": "House number, block number, street name,...",
       "Quantity": "Quantity",
       "Email": "Email",
       "Notes": "Leave a message if you have any questions about the product or set a later delivery time",
-      "ButtonSubmit": "Checkout",
+      "ButtonSubmit": "Checkout Now",
       "ButtonContinueShopping": "Continue shopping",
       "SuccessMessage": "Thank you! Your order is on the move! We’ll contact you soon.",
       "Offer": {
-         "Title": "Penawaran Spesial",
+         "Title": "Special Offer",
          "Discount": "Discount"
       },
       "ErrorMessage": {
@@ -44,12 +44,12 @@
          "SubTitle": "Please ensure your data is correct for fast delivery."
       },
       "Body": {
-         "SearchCityPlaceholder": "Search city/district...",
+         "SearchCityPlaceholder": "Search Province/City...",
          "NoShippingAddress": "No shipping address",
          "Algeria": {
-            "SelectStateLabel": "State (Wilaya)",
-            "SelectStatePlaceholder": "Select state...",
-            "CityLabel": "City (Commune)"
+            "SelectStateLabel": "Province",
+            "SelectStatePlaceholder": "Select Province...",
+            "CityLabel": "City"
          }
       },
       "Footer": {
