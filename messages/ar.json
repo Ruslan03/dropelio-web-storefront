@@ -1,10 +1,10 @@
 {
    "General": {
       "CashOnDelivery": "الدفع عند الاستلام",
-      "PrivacyPolicy": "Kebijakan Privasi",
-      "TermOfService": "Syarat dan Ketentuan",
-      "RefundPolicy": "Kebijakan Pengembalian",
-      "BackToMainPage": "Kembali ke Halaman Utama"
+      "PrivacyPolicy": "سياسة الخصوصية",
+      "TermOfService": "سياسة الإستخدام",
+      "RefundPolicy": "سياسة إرجاع وتبديل",
+      "BackToMainPage": "العودة إلى المتجر"
    },
    "ProductReview": {
       "BadgeSold": "مبيعة",
@@ -23,8 +23,8 @@
       "ButtonContinueShopping": "واصل طلبك",
       "SuccessMessage": "شكرا على طلبك, سيتم معالجة طلبك قريبا وإرساله لك, يرجى إبقاء هاتفك شغال حتى يتمكن موزعنا من التواصل معك, أي إلغاء للطلب يسبب لنا خسارة كبيرة",
       "Offer": {
-         "Title": "Penawaran Spesial",
-         "Discount": "Discount"
+         "Title": "عرض خاص ومميز",
+         "Discount": "تخفيض"
       },
       "ErrorMessage": {
          "InvalidOrder": {
@@ -59,10 +59,10 @@
       }
    },
    "OrderSummary": {
-      "Title": "Ringkasan Order",
-      "Subtotal": "Subtotal",
-      "ShippingCost": "Shipping Cost",
-      "Discount": "Discount",
-      "Total": "Total"
+      "Title": "ملخص الطلبية",
+      "Subtotal": "سعر المنتج",
+      "ShippingCost": "سعر التوصيل",
+      "Discount": "التخفيض",
+      "Total": "المجموع"
    }
 }
