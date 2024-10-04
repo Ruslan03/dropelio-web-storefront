@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import BaseContainer from '@/app/components/container'
 import BaseFooter from '@/app/components/footer'
 import { getProduct } from '@/app/lib/services'
@@ -91,7 +91,7 @@ const Page = async ({ params }: Props) => {
 
    const isShowCoForm = co_mode === 'internal' && store?.co_on_preview == 1
    const inputFields = co_form?.split(',')
-   
+
    return (
       <BaseContainer>
          <div className='flex flex-col gap-8 mb-8'>
@@ -102,23 +102,25 @@ const Page = async ({ params }: Props) => {
 
                <div className='mt-3 flex items-center gap-2'>
                   <BadgeRating sold={sold} rating={rating} />
-                  <BadgeStore  storeName={store?.name}/>
+                  <BadgeStore storeName={store?.name} />
                </div>
             </div>
 
             <ImageSlider images={product_images} />
 
             {isShowCoForm && (
-               <CheckoutForm
-                  pixelID={meta_pixel_id}
-                  country={store?.country}
-                  storeID={store?.id}
-                  productID={id}
-                  productPrice={product_price}
-                  inputFields={inputFields}
-                  currency={product_currency}
-                  qtyOffers={product_qty_offers || []}
-               />
+               <Suspense fallback={null}>
+                  <CheckoutForm
+                     pixelID={meta_pixel_id}
+                     country={store?.country}
+                     storeID={store?.id}
+                     productID={id}
+                     productPrice={product_price}
+                     inputFields={inputFields}
+                     currency={product_currency}
+                     qtyOffers={product_qty_offers || []}
+                  />
+               </Suspense>
             )}
 
             <BannerCOD />
