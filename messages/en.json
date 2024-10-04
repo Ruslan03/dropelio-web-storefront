@@ -1,10 +1,10 @@
 {
    "General": {
       "CashOnDelivery": "Cash On Delivery",
-      "PrivacyPolicy": "Kebijakan Privasi",
-      "TermOfService": "Syarat dan Ketentuan",
-      "RefundPolicy": "Kebijakan Pengembalian",
-      "BackToMainPage": "Kembali ke Halaman Utama"
+      "PrivacyPolicy": "Privacy Policy",
+      "TermOfService": "Terms of Service",
+      "RefundPolicy": "Refund & Return Policy",
+      "BackToMainPage": "Back to Main Page"
    },
    "ProductReview": {
       "BadgeSold": "Sold",
@@ -13,7 +13,7 @@
    "CheckoutForm": {
       "Title": "Checkout Form",
       "Name": "Your name",
-      "PhoneNumber": "Your Phone / whatsapp number",
+      "PhoneNumber": "Your Phone / Whatsapp number",
       "City": "Select city",
       "Address": "Detail address",
       "Quantity": "Quantity",
@@ -59,7 +59,7 @@
       }
    },
    "OrderSummary": {
-      "Title": "Ringkasan Order",
+      "Title": "Order Summary",
       "Subtotal": "Subtotal",
       "ShippingCost": "Shipping Cost",
       "Discount": "Discount",
