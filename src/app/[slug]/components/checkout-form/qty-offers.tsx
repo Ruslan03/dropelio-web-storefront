@@ -65,7 +65,7 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
                         </div>
                      </label>
                      {isShowCompare && (
-                        <div className={`flex items-center gap-2 text-xs ${i === 0 ? 'bg-gray-400' : 'bg-blue-600'} text-white font-semibold py-1 px-3 rounded-md absolute top-0 right-1 -translate-y-1/2`}>
+                        <div className={`flex items-center gap-2 text-xs shadow-md ${i === 0 ? 'bg-gray-400' : 'bg-blue-600'} text-white font-semibold py-1 px-3 rounded-md absolute top-0 right-2 -translate-y-1/2`}>
                            <p>{t('Discount')}: {currencyFormat(totalDiscount, currency)}</p>
                         </div>
                      )}
