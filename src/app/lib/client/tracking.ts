@@ -1,6 +1,6 @@
 export const trackPurchaseEvent = async (pixelID?: string, params?: any) => {
    
-   if(!pixelID) return false
+   if(!pixelID || pixelID === 'null') return false
 
    return new Promise((resolve) => {
       import('react-facebook-pixel')
@@ -16,7 +16,7 @@ export const trackPurchaseEvent = async (pixelID?: string, params?: any) => {
 
 export const trackPageViewEvent = async (pixelID?: string) => {
 
-   if(!pixelID) return false
+   if(!pixelID || pixelID === 'null') return false
 
    return new Promise((resolve) => {
       import('react-facebook-pixel')
