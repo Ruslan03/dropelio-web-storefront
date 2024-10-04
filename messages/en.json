@@ -21,7 +21,17 @@
       "Notes": "Notes",
       "ButtonSubmit": "Checkout",
       "ButtonContinueShopping": "Continue shopping",
-      "SuccessMessage": "Thank you! Your order is on the move! We’ll contact you soon."
+      "SuccessMessage": "Thank you! Your order is on the move! We’ll contact you soon.",
+      "ErrorMessage": {
+         "InvalidOrder": {
+            "Title": "Invalid order detected",
+            "Description": "Please check your details or contact support for assistance."
+         },
+         "InProgressOrder": {
+            "Title": "Your order is already being processed",
+            "Description": "Please wait for it to be completed before placing another."
+         }
+      }
    },
    "ShipmentForm": {
       "Placeholder": "Select a shipping address...",

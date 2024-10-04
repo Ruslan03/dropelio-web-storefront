@@ -21,7 +21,17 @@
       "Notes": "Catatan",
       "ButtonSubmit": "Pesan sekarang (COD)",
       "ButtonContinueShopping": "Lanjutkan belanja",
-      "SuccessMessage": "Terima kasih! Orderan kamu sedang diproses"
+      "SuccessMessage": "Terima kasih! Orderan kamu sedang diproses",
+      "ErrorMessage": {
+         "InvalidOrder": {
+            "Title": "Pesanan tidak valid terdeteksi",
+            "Description": "Harap tunggu hingga selesai sebelum membuat pesanan lain."
+         },
+         "InProgressOrder": {
+            "Title": "Pesanan Anda sedang diproses",
+            "Description": "Harap periksa detail Anda atau hubungi dukungan untuk bantuan."
+         }
+      }
    },
    "ShipmentForm": {
       "Placeholder": "Pilih alamat pengiriman...",

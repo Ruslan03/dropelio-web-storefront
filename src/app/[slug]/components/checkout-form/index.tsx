@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ChangeEvent, ChangeEventHandler, FormEvent, useState } from 'react'
+import React, { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { postCheckout } from '@/app/lib/services';
@@ -9,6 +9,8 @@ import { useTranslations } from 'next-intl';
 import ShipmentForm, { ShipmentType } from './shipment-form';
 import OrderSummary, { TypeSummary } from './order-summary';
 import QtySelector from './qty-selector';
+import { useToast } from '@/hooks/use-toast';
+import { trackPageViewEvent, trackPurchaseEvent } from '@/app/lib/client/tracking';
 
 type Payload = {
    name: string
@@ -28,11 +30,12 @@ interface ICheckoutForm {
    productPrice: number
    storeID: string
    currency: string
+   pixelID?: string
 }
 
-const CheckoutForm = ({ inputFields, productID, storeID, country, currency, productPrice }: ICheckoutForm) => {
+const CheckoutForm = ({ pixelID, inputFields, productID, storeID, country, currency, productPrice }: ICheckoutForm) => {
    const t = useTranslations('CheckoutForm')
-
+   const { toast } = useToast()
    const [isShowSuccess, setIsShowSuccess] = useState(false)
    const [isLoading, setIsLoading] = useState(false)
    const [refreshKey, setRefreshKey] = useState(1)
@@ -78,7 +81,16 @@ const CheckoutForm = ({ inputFields, productID, storeID, country, currency, prod
       await postCheckout({
          payload,
          productID
-      }).then(() => {
+      }).then(async () => {
+         const { qty, price } = summary
+         const pixelPayload = {
+            name: payload?.name,
+            phone: payload?.whatsapp,
+            currency: currency,
+            value: (qty * price) + (shippingCost || 0)
+         }
+         await trackPurchaseEvent(pixelID, pixelPayload)
+
          setPayload({
             name: '',
             qty: 1,
@@ -88,12 +100,30 @@ const CheckoutForm = ({ inputFields, productID, storeID, country, currency, prod
          setShippingCost(null)
          setIsShowSuccess(true)
       }).catch((error) => {
-         alert(error?.message || 'Something went wrong')
+         const code = error?.code
+
+         if (code == '401') {
+            toast({
+               variant: 'destructive',
+               title: t('ErrorMessage.InProgressOrder.Title'),
+               description: t('ErrorMessage.InProgressOrder.Description')
+            })
+         } else {
+            toast({
+               variant: 'destructive',
+               title: t('ErrorMessage.InvalidOrder.Title'),
+               description: t('ErrorMessage.InvalidOrder.Description')
+            })
+         }
       }).finally(() => setIsLoading(false))
    }
 
    const af = (field: string) => inputFields.indexOf(field) > -1
    const isShowQtySelector = af('qty')
+
+   useEffect(() => {
+      trackPageViewEvent(pixelID)
+   }, [pixelID])
 
    return (
       <div className='relative bg-gradient-to-tr from-gray-100  to-gray-50 border-[1px] border-gray-200 p-4 rounded-md'>

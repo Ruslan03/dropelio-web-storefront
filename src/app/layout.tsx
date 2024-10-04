@@ -6,6 +6,7 @@ import "./globals.css";
 import { getStore } from "./lib/services";
 import { Viewport } from 'next';
 import { notFound } from 'next/navigation';
+import { Toaster } from '@/components/ui/toaster';
 
 
 const cairo = Cairo({
@@ -54,6 +55,7 @@ export default async function RootLayout({
          <body className={locale === 'ar' ? cairo.className : ''}>
             <NextIntlClientProvider messages={messages}>
                {children}
+               <Toaster />
             </NextIntlClientProvider>
          </body>
       </html>

@@ -21,7 +21,17 @@
       "Notes": "Remarques",
       "ButtonSubmit": "Envoyer la commande",
       "ButtonContinueShopping": "Continuer",
-      "SuccessMessage": "Merci pour votre commande ! Le produit sera expédié aujourd'hui et il faudra généralement entre 2 et 5 jours pour vous parvenir. Veuillez garder votre téléphone allumé afin que le livreur puisse vous contacter."
+      "SuccessMessage": "Merci pour votre commande ! Le produit sera expédié aujourd'hui et il faudra généralement entre 2 et 5 jours pour vous parvenir. Veuillez garder votre téléphone allumé afin que le livreur puisse vous contacter.",
+      "ErrorMessage": {
+         "InvalidOrder": {
+            "Title": "Commande invalide détectée.",
+            "Description": "Veuillez vérifier vos informations ou contacter le support."
+         },
+         "InProgressOrder": {
+            "Title": "Votre commande est déjà en cours de traitement",
+            "Description": "Veuillez attendre qu elle soit terminée avant d en passer une autre."
+         }
+      }
    },
    "ShipmentForm": {
       "Placeholder": "Adresse de livraison...",

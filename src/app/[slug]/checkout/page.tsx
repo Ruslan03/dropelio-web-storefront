@@ -70,6 +70,7 @@ const Page = async ({ params }: Props) => {
       compare_at_price_formatted,
       product_features,
       checkout_form: co_form,
+      meta_pixel_id
    } = product
 
    const inputFields = co_form?.split(',')
@@ -92,6 +93,7 @@ const Page = async ({ params }: Props) => {
             <Features features={product_features} />
 
             <CheckoutForm
+               pixelID={meta_pixel_id}
                country={store?.country}
                productID={id}
                storeID={store?.id}

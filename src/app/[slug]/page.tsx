@@ -84,7 +84,8 @@ const Page = async ({ params }: Props) => {
       checkout_mode: co_mode,
       checkout_link: co_link,
       checkout_form: co_form,
-      rating
+      rating,
+      meta_pixel_id
    } = product
 
    const isShowCoForm = co_mode === 'internal' && store?.co_on_preview == 1
@@ -108,6 +109,7 @@ const Page = async ({ params }: Props) => {
 
             {isShowCoForm && (
                <CheckoutForm
+                  pixelID={meta_pixel_id}
                   country={store?.country}
                   storeID={store?.id}
                   productID={id}
