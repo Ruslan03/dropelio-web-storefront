@@ -26,6 +26,7 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
    return (
       <div className='relative'>
          <label className='absolute left-0 top-0 opacity-0'>
+            Qty offer:
             <input name='qty'
                value={selected}
                type='text'
