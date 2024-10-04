@@ -1,10 +1,10 @@
 {
    "General": {
       "CashOnDelivery": "Paiement à la livraison",
-      "PrivacyPolicy": "Kebijakan Privasi",
-      "TermOfService": "Syarat dan Ketentuan",
-      "RefundPolicy": "Kebijakan Pengembalian",
-      "BackToMainPage": "Kembali ke Halaman Utama"
+      "PrivacyPolicy": "Politique de confidentialité",
+      "TermOfService": "Conditions d'utilisation",
+      "RefundPolicy": "Politique de remboursement",
+      "BackToMainPage": "Retour à la page principale"
    },
    "ProductReview": {
       "BadgeSold": "Vendu",
@@ -23,8 +23,8 @@
       "ButtonContinueShopping": "Continuer",
       "SuccessMessage": "Merci pour votre commande ! Le produit sera expédié aujourd'hui et il faudra généralement entre 2 et 5 jours pour vous parvenir. Veuillez garder votre téléphone allumé afin que le livreur puisse vous contacter.",
       "Offer": {
-         "Title": "Penawaran Spesial",
-         "Discount": "Discount"
+         "Title": "Offre Spéciale",
+         "Discount": "Remise"
       },
       "ErrorMessage": {
          "InvalidOrder": {
@@ -59,10 +59,10 @@
       }
    },
    "OrderSummary": {
-      "Title": "Ringkasan Order",
-      "Subtotal": "Subtotal",
-      "ShippingCost": "Shipping Cost",
-      "Discount": "Discount",
+      "Title": "Détails de la commande",
+      "Subtotal": "Prix du produit",
+      "ShippingCost": "Coût de livraison",
+      "Discount": "Remise",
       "Total": "Total"
    }
 }
