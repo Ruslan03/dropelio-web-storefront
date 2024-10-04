@@ -138,7 +138,7 @@ const CheckoutForm = (props: ICheckoutForm) => {
    const af = (field: string) => inputFields.indexOf(field) > -1
    const isShowQtyOffers = Boolean(qtyOffers?.length)
    const isShowQtySelector = af('qty') && !isShowQtyOffers
-   const isShowSpecialOfferTitle = isShowQtyOffers
+   const isShowOffer = isShowQtyOffers
 
    useEffect(() => {
       trackPageViewEvent(pixelID)
@@ -198,31 +198,33 @@ const CheckoutForm = (props: ICheckoutForm) => {
                   />
                )}
 
-               <hr className='my-1 w-3/4 mx-auto' />
-
-               <div>
-                  {isShowSpecialOfferTitle && (
+               {isShowOffer && (
+                  <>
+                  <hr className='my-1 w-full mx-auto' />
                      <div className='flex gap-1'>
                         <h2 className='font-semibold text-[16px] mb-2'>{t('Offer.Title')}</h2>
                      </div>
-                  )}
 
-                  {isShowQtyOffers && (
-                     <QtyOffers
-                        key={refreshKey}
-                        offers={qtyOffers || []}
-                        price={productPrice}
-                        currency={currency}
-                        onSelectDiscount={(offer) => {
-                           setPayload((prevPayload) => ({
-                              ...prevPayload,
-                              qty: offer?.qty || 1,
-                              discount: offer?.discount || 0
-                           }))
-                        }}
-                     />
-                  )}
-               </div>
+
+                     {isShowQtyOffers && (
+                        <QtyOffers
+                           key={refreshKey}
+                           offers={qtyOffers || []}
+                           price={productPrice}
+                           currency={currency}
+                           onSelectDiscount={(offer) => {
+                              setPayload((prevPayload) => ({
+                                 ...prevPayload,
+                                 qty: offer?.qty || 1,
+                                 discount: offer?.discount || 0
+                              }))
+                           }}
+                        />
+                     )}
+                  </>
+               )}
+
+               <hr className='my-1 w-full mx-auto' />
 
                <OrderSummary summary={summary} currency={currency} />
 
