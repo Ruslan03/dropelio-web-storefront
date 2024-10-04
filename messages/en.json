@@ -22,6 +22,10 @@
       "ButtonSubmit": "Checkout",
       "ButtonContinueShopping": "Continue shopping",
       "SuccessMessage": "Thank you! Your order is on the move! We’ll contact you soon.",
+      "Offer": {
+         "Title": "Penawaran Spesial",
+         "Discount": "Discount"
+      },
       "ErrorMessage": {
          "InvalidOrder": {
             "Title": "Invalid order detected",
@@ -58,6 +62,7 @@
       "Title": "Ringkasan Order",
       "Subtotal": "Subtotal",
       "ShippingCost": "Shipping Cost",
+      "Discount": "Discount",
       "Total": "Total"
    }
 }

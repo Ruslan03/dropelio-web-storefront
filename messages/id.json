@@ -22,6 +22,10 @@
       "ButtonSubmit": "Pesan sekarang (COD)",
       "ButtonContinueShopping": "Lanjutkan belanja",
       "SuccessMessage": "Terima kasih! Orderan kamu sedang diproses",
+      "Offer": {
+         "Title": "Penawaran Spesial",
+         "Discount": "Diskon"
+      },
       "ErrorMessage": {
          "InvalidOrder": {
             "Title": "Pesanan tidak valid terdeteksi",
@@ -57,7 +61,8 @@
    "OrderSummary": {
       "Title": "Ringkasan Order",
       "Subtotal": "Subtotal",
-      "ShippingCost": "Shipping Cost",
+      "ShippingCost": "Biaya Pengiriman",
+      "Discount": "Diskon",
       "Total": "Total"
    }
 }

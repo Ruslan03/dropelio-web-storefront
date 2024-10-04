@@ -4,18 +4,20 @@ import React, { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState 
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { postCheckout } from '@/app/lib/services';
-import { CircleCheckBig, LoaderCircle } from 'lucide-react';
+import { BadgePercent, CircleCheckBig, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import ShipmentForm, { ShipmentType } from './shipment-form';
 import OrderSummary, { TypeSummary } from './order-summary';
 import QtySelector from './qty-selector';
 import { useToast } from '@/hooks/use-toast';
 import { trackPageViewEvent, trackPurchaseEvent } from '@/app/lib/client/tracking';
+import QtyOffers from './qty-offers';
 
 type Payload = {
    name: string
    qty: number
    whatsapp: string
+   discount: number,
    city_id?: number
    city_name?: string
    address?: string
@@ -30,10 +32,21 @@ interface ICheckoutForm {
    productPrice: number
    storeID: string
    currency: string
-   pixelID?: string
+   pixelID?: string,
+   qtyOffers?: any[]
 }
 
-const CheckoutForm = ({ pixelID, inputFields, productID, storeID, country, currency, productPrice }: ICheckoutForm) => {
+const CheckoutForm = (props: ICheckoutForm) => {
+   const {
+      pixelID,
+      inputFields,
+      productID,
+      storeID,
+      country,
+      currency,
+      productPrice,
+      qtyOffers
+   } = props
    const t = useTranslations('CheckoutForm')
    const { toast } = useToast()
    const [isShowSuccess, setIsShowSuccess] = useState(false)
@@ -44,13 +57,16 @@ const CheckoutForm = ({ pixelID, inputFields, productID, storeID, country, curre
    const [payload, setPayload] = useState<Payload>({
       name: '',
       qty: 1,
-      whatsapp: ''
+      whatsapp: '',
+      discount: 0
    })
 
    const summary: TypeSummary = {
       qty: payload.qty,
       price: productPrice,
-      shippingCost
+      shippingCost,
+      discount: payload.discount,
+      grandTotal: (payload.qty * productPrice) + (shippingCost || 0) - (payload.discount || 0)
    }
 
    const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -87,14 +103,15 @@ const CheckoutForm = ({ pixelID, inputFields, productID, storeID, country, curre
             name: payload?.name,
             phone: payload?.whatsapp,
             currency: currency,
-            value: (qty * price) + (shippingCost || 0)
+            value: summary.grandTotal
          }
          await trackPurchaseEvent(pixelID, pixelPayload)
 
          setPayload({
             name: '',
             qty: 1,
-            whatsapp: ''
+            whatsapp: '',
+            discount: 0
          })
          setRefreshKey((prevKey) => prevKey + 1)
          setShippingCost(null)
@@ -119,7 +136,9 @@ const CheckoutForm = ({ pixelID, inputFields, productID, storeID, country, curre
    }
 
    const af = (field: string) => inputFields.indexOf(field) > -1
-   const isShowQtySelector = af('qty')
+   const isShowQtyOffers = Boolean(qtyOffers?.length)
+   const isShowQtySelector = af('qty') && !isShowQtyOffers
+   const isShowSpecialOfferTitle = isShowQtyOffers
 
    useEffect(() => {
       trackPageViewEvent(pixelID)
@@ -129,7 +148,7 @@ const CheckoutForm = ({ pixelID, inputFields, productID, storeID, country, curre
       <div className='relative bg-gradient-to-tr from-gray-100  to-gray-50 border-[1px] border-gray-200 p-4 rounded-md'>
 
          {isShowSuccess && (
-            <div className='p-3 absolute left-0 w-full top-0 h-full bg-opacity-90 gap-3 bg-white flex flex-col items-center justify-center'>
+            <div className='p-3 absolute z-50 left-0 w-full top-0 h-full bg-opacity-90 gap-3 bg-white flex flex-col items-center justify-center'>
                <CircleCheckBig className='text-blue-600 w-16 h-14 md:w-14 md:h-16' />
                <p className='font-semibold text-base md:text-xl text-center'>{t('SuccessMessage')}</p>
                <button onClick={() => setIsShowSuccess(false)} className='active:opacity-75 transition-all ease-in-out duration-75 px-3 py-2 mt-4 bg-gradient-to-t from-blue-600  to-blue-500 text-white rounded-md text-sm md:text-base'>{t('ButtonContinueShopping')}</button>
@@ -180,6 +199,30 @@ const CheckoutForm = ({ pixelID, inputFields, productID, storeID, country, curre
                )}
 
                <hr className='my-1 w-3/4 mx-auto' />
+
+               <div>
+                  {isShowSpecialOfferTitle && (
+                     <div className='flex gap-1'>
+                        <h2 className='font-semibold text-[16px] mb-2'>{t('Offer.Title')}</h2>
+                     </div>
+                  )}
+
+                  {isShowQtyOffers && (
+                     <QtyOffers
+                        key={refreshKey}
+                        offers={qtyOffers || []}
+                        price={productPrice}
+                        currency={currency}
+                        onSelectDiscount={(offer) => {
+                           setPayload((prevPayload) => ({
+                              ...prevPayload,
+                              qty: offer?.qty || 1,
+                              discount: offer?.discount || 0
+                           }))
+                        }}
+                     />
+                  )}
+               </div>
 
                <OrderSummary summary={summary} currency={currency} />
 

@@ -70,8 +70,10 @@ const Page = async ({ params }: Props) => {
       compare_at_price_formatted,
       product_features,
       checkout_form: co_form,
-      meta_pixel_id
+      meta_pixel_id,
+      product_qty_offers
    } = product
+
 
    const inputFields = co_form?.split(',')
 
@@ -100,6 +102,7 @@ const Page = async ({ params }: Props) => {
                inputFields={inputFields}
                productPrice={product_price}
                currency={product_currency}
+               qtyOffers={product_qty_offers || []}
             />
          </div>
          <BaseFooter />

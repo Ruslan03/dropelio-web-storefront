@@ -85,7 +85,8 @@ const Page = async ({ params }: Props) => {
       checkout_link: co_link,
       checkout_form: co_form,
       rating,
-      meta_pixel_id
+      meta_pixel_id,
+      product_qty_offers
    } = product
 
    const isShowCoForm = co_mode === 'internal' && store?.co_on_preview == 1
@@ -116,6 +117,7 @@ const Page = async ({ params }: Props) => {
                   productPrice={product_price}
                   inputFields={inputFields}
                   currency={product_currency}
+                  qtyOffers={product_qty_offers || []}
                />
             )}
 

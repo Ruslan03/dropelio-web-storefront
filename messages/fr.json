@@ -22,6 +22,10 @@
       "ButtonSubmit": "Envoyer la commande",
       "ButtonContinueShopping": "Continuer",
       "SuccessMessage": "Merci pour votre commande ! Le produit sera expédié aujourd'hui et il faudra généralement entre 2 et 5 jours pour vous parvenir. Veuillez garder votre téléphone allumé afin que le livreur puisse vous contacter.",
+      "Offer": {
+         "Title": "Penawaran Spesial",
+         "Discount": "Discount"
+      },
       "ErrorMessage": {
          "InvalidOrder": {
             "Title": "Commande invalide détectée.",
@@ -58,6 +62,7 @@
       "Title": "Ringkasan Order",
       "Subtotal": "Subtotal",
       "ShippingCost": "Shipping Cost",
+      "Discount": "Discount",
       "Total": "Total"
    }
 }
