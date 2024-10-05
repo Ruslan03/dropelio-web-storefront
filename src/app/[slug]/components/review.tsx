@@ -4,8 +4,8 @@ import React from 'react'
 import Image from 'next/image'
 import Slider from "react-slick";
 
-import { baseUrl } from '@/app/lib/client/base-path'
 import { defaultConfig } from '@/app/lib/client/slider-config';
+import { storage } from '@/app/lib/base-path';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -32,7 +32,7 @@ const Review = ({ reviews }: IReview) => {
                   <div className='flex flex-col gap-1 items-center mr-2 md:mr-4 py-5 px-3 md:px-4 bg-gradient-to-tr from-gray-100 to-gray-50 rounded-md'>
                      <div className='h-16 w-16 rounded-full relative'>
                         <Image
-                           src={baseUrl(`storage/${review.user_image}`)}
+                           src={storage(review.user_image)}
                            alt='user-img'
                            fill
                            className='rounded-full'
@@ -48,7 +48,7 @@ const Review = ({ reviews }: IReview) => {
                      <div className='w-full h-20 flex items-center justify-center'>
                         <p className='text-sm italic line-clamp-4 text-wrap' title={review.review}>{review.review}</p>
                         {/* <Image
-                     src={baseUrl(`storage/${review.product_image}`)}
+                     src={storage(${review.product_image}`)}
                      alt='review-img'
                      width={15}
                      height={15}

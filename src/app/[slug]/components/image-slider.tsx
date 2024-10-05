@@ -4,11 +4,11 @@ import React, { useState } from 'react'
 import Slider from "react-slick";
 
 import Image from 'next/image';
-import { baseUrl } from '@/app/lib/client/base-path';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { defaultConfig } from '@/app/lib/client/slider-config';
+import { storage } from '@/app/lib/base-path';
 
 type Image = {
    image_path: string
@@ -22,7 +22,7 @@ const ImageSlider: React.FC<IImageSlider> = ({ images }) => {
 
    return (
       <Slider {...defaultConfig}>
-         {(images || []).map((img, i) => <SlideImage key={i} src={baseUrl(`storage/${img.image_path}`)} />)}
+         {(images || []).map((img, i) => <SlideImage key={i} src={storage(img.image_path)} />)}
       </Slider>
    )
 }

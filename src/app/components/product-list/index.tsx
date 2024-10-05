@@ -9,6 +9,7 @@ import BadgeRating from './badge-rating'
 import Price from './price'
 import ProductPagination from './pagination'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { storage } from '@/app/lib/base-path'
 
 const ProductList = () => {
    const router = useRouter()
@@ -70,7 +71,7 @@ const ProductItem = ({ product }: { product: any }) => {
                <div className='w-full h-full bg-gray-100 animate-pulse' />
             )}
             <Image
-               src={baseUrl(`storage/${product?.product_images?.[0].image_path}`)}
+               src={storage(product?.product_images?.[0]?.image_path)}
                alt={product?.title}
                fill
                sizes='100vw'

@@ -7,7 +7,7 @@ import Features from '../components/features'
 import BannerCOD from '../components/banner-cod'
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
-import { baseUrl } from '@/app/lib/base-path'
+import { storage } from '@/app/lib/base-path'
 import BadgeRating from '../components/badge-rating'
 import BadgeStore from '../components/badge-store'
 
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props) {
       notFound()
    }
 
-   const images = (product?.product_images || []).map((img: any) => baseUrl(`storage/${img.image_path}`))
+   const images = (product?.product_images || []).map((img: any) => storage(img.image_path))
 
    return {
       title: `Checkout ${product.title}`,

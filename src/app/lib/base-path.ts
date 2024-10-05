@@ -14,3 +14,7 @@ export const baseUrl = (path?: string) => {
 
    return `${host}/${path}`
 };
+
+export const storage = (path:string) => {
+   return `https://dropelio.xyz/storage/${path}`
+}
