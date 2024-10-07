@@ -4,7 +4,7 @@ import {getRequestConfig} from 'next-intl/server';
 export default getRequestConfig(async () => {
   const store = await getStore()
   
-  const locale = store?.language_code;
+  const locale = store?.language_code || 'en';
 
   return {
     locale,

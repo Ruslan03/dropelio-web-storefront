@@ -1,5 +1,4 @@
 import type { MetadataRoute } from 'next'
-import { baseUrl } from './lib/base-path'
  
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +7,5 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: `${baseUrl()}/sitemap.xml`,
   }
 }

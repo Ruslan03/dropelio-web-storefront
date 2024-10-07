@@ -1,10 +1,9 @@
-import { getBaseApiURL } from "@/app/lib/services";
-
+import { getBaseApiURL } from "@/app/lib/base-path";
 
 export const getShippingCities = async ({ payload }: { payload: any }) => {
 
    try {
-      const baseUrl = getBaseApiURL()
+      const baseUrl = await getBaseApiURL()
       const params = new URLSearchParams(payload).toString()
       const res = await fetch(`${baseUrl}/storefront/select2/city?${params}`, {
          next: {
@@ -27,7 +26,7 @@ export const getShippingCities = async ({ payload }: { payload: any }) => {
 export const getShippingCost = async ({ productID, payload }: { productID: string, payload: any }) => {
 
    try {
-      const baseUrl = getBaseApiURL()
+      const baseUrl = await getBaseApiURL()
       const params = new URLSearchParams(payload).toString()
       const res = await fetch(`${baseUrl}/storefront/product/${productID}/ongkir?${params}`, {
          next: {
@@ -49,7 +48,7 @@ export const getShippingCost = async ({ productID, payload }: { productID: strin
 export const getAlgeriaStates = async ({ payload }: { payload: { store_id: string } }) => {
 
    try {
-      const baseUrl = getBaseApiURL()
+      const baseUrl = await getBaseApiURL()
       const params = new URLSearchParams(payload).toString()
       const res = await fetch(`${baseUrl}/storefront/select2/state/algeria?${params}`, {
          next: {
@@ -72,7 +71,7 @@ export const getAlgeriaStates = async ({ payload }: { payload: { store_id: strin
 export const getAlgeriaCities = async ({ payload }: { payload: { store_id: string, state: string } }) => {
 
    try {
-      const baseUrl = getBaseApiURL()
+      const baseUrl = await getBaseApiURL()
       const params = new URLSearchParams(payload).toString()
       const res = await fetch(`${baseUrl}/storefront/select2/city/algeria?${params}`, {
          next: {

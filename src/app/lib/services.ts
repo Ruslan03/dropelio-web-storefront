@@ -1,20 +1,9 @@
-import { baseUrl } from "./base-path";
-
-export const getBaseApiURL = () => {
-   const host = baseUrl()
-   if (process.env.NODE_ENV === 'development') {
-      return 'https://test.dropelio.xyz/api/v1'
-   }
-
-   return `${host}/api/v1`
-};
-
-
+import { getBaseApiURL } from "./base-path";
 
 export const getProduct = async ({ slug }: { slug: string }) => {
 
    try {
-      const baseUrl = getBaseApiURL()
+      const baseUrl = await getBaseApiURL()
       const res = await fetch(`${baseUrl}/storefront/product/${slug}`, { next: { revalidate: 0 } });
 
       if (res.status === 200) {
@@ -32,7 +21,7 @@ export const getProduct = async ({ slug }: { slug: string }) => {
 export const getDescription = async ({ productID }: { productID: string }) => {
 
    try {
-      const baseUrl = getBaseApiURL()
+      const baseUrl = await getBaseApiURL()
       const res = await fetch(`${baseUrl}/storefront/product/${productID}/description`, { next: { revalidate: 0 } });
       const content = await res.text();
 
@@ -46,7 +35,7 @@ export const getDescription = async ({ productID }: { productID: string }) => {
 export const postCheckout = async (params: { payload: any, productID: string }) => {
 
    try {
-      const baseUrl = getBaseApiURL()
+      const baseUrl = await getBaseApiURL()
       const post = await fetch(`${baseUrl}/storefront/product/${params.productID}/checkout`, {
          next: { revalidate: 0 },
          method: 'POST',
@@ -71,7 +60,7 @@ export const postCheckout = async (params: { payload: any, productID: string }) 
 export const getStore = async () => {
 
    try {
-      const baseUrl = getBaseApiURL()
+      const baseUrl = await getBaseApiURL()
       const res = await fetch(`${baseUrl}/storefront/my-store`, { next: { revalidate: 120 } });
 
       if (res.status === 200) {
@@ -98,7 +87,7 @@ export const getStore = async () => {
 export const getProducts = async ({ params }: { params: { page: string } }) => {
 
    try {
-      const baseUrl = getBaseApiURL()
+      const baseUrl = await getBaseApiURL()
       const createParams = new URLSearchParams(params).toString()
       const res = await fetch(`${baseUrl}/storefront/product?${createParams}`, { next: { revalidate: 0 } });
 
@@ -117,7 +106,7 @@ export const getProducts = async ({ params }: { params: { page: string } }) => {
 export const getPageData = async ({ type }: { type: 'term' | 'privacy' | 'return' }) => {
 
    try {
-      const baseUrl = getBaseApiURL()
+      const baseUrl = await getBaseApiURL()
       const res = await fetch(`${baseUrl}/storefront/page/${type}`, { next: { revalidate: 60 } });
 
       if (res.status === 200) {

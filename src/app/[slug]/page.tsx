@@ -11,7 +11,7 @@ import FloatingButtonCheckout from './components/floating-button-checkout'
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { LoadingSkeleton } from './components/description'
-import { storage, baseUrl } from '@/app/lib/base-path'
+import { storage } from '@/app/lib/base-path'
 import BadgeStore from './components/badge-store'
 
 const CheckoutForm = dynamic(() => import('./components/checkout-form'), {
