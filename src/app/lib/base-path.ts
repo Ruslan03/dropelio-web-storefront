@@ -13,7 +13,7 @@ export async function getBaseHeaders() {
       const nextHeaders = await import('next/headers')
       store_domain = nextHeaders.headers().get('host') as string
    } else {
-      store_domain = window.location.origin
+      store_domain = window.location.host.replace('www.', '')
    }
 
    if (process.env.NODE_ENV === 'development') {
