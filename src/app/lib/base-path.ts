@@ -2,20 +2,25 @@ export const storage = (path: string) => {
    return `https://dropelio.xyz/storage/${path}`
 }
 
+export const BASE_API_URL = 'https://api.dropelio.xyz/api/v1';
 
-export async function getBaseApiURL() {
-   let host = 'https://test.dropelio.xyz'
+
+export async function getBaseHeaders() {
+   // let host = 'https://test.dropelio.xyz'
+   let store_domain = ''
    
    if (typeof window === 'undefined') {
       const nextHeaders = await import('next/headers')
-      host = nextHeaders.headers().get('host') as string
+      store_domain = nextHeaders.headers().get('host') as string
    } else {
-      host = window.location.origin
+      store_domain = window.location.origin
    }
 
    if (process.env.NODE_ENV === 'development') {
-      host = 'https://test.dropelio.xyz'
+      store_domain = 'test.dropelio.xyz'
    }
 
-   return `${host}/api/v1`
+   return {
+      'x-store-domain': store_domain
+   }
 };

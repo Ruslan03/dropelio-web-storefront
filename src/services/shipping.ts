@@ -1,14 +1,15 @@
-import { getBaseApiURL } from "@/app/lib/base-path";
+import { BASE_API_URL, getBaseHeaders } from "@/app/lib/base-path";
 
 export const getShippingCities = async ({ payload }: { payload: any }) => {
 
    try {
-      const baseUrl = await getBaseApiURL()
+      const baseHeaders = await getBaseHeaders()
       const params = new URLSearchParams(payload).toString()
-      const res = await fetch(`${baseUrl}/storefront/select2/city?${params}`, {
+      const res = await fetch(`${BASE_API_URL}/storefront/select2/city?${params}`, {
          next: {
             revalidate: false
-         }
+         },
+         headers: baseHeaders
       });
 
       if (res.status === 200) {
@@ -26,12 +27,13 @@ export const getShippingCities = async ({ payload }: { payload: any }) => {
 export const getShippingCost = async ({ productID, payload }: { productID: string, payload: any }) => {
 
    try {
-      const baseUrl = await getBaseApiURL()
+      const baseHeaders = await getBaseHeaders()
       const params = new URLSearchParams(payload).toString()
-      const res = await fetch(`${baseUrl}/storefront/product/${productID}/ongkir?${params}`, {
+      const res = await fetch(`${BASE_API_URL}/storefront/product/${productID}/ongkir?${params}`, {
          next: {
             revalidate: false
-         }
+         },
+         headers: baseHeaders
       });
 
       if (res.status === 200) {
@@ -48,12 +50,13 @@ export const getShippingCost = async ({ productID, payload }: { productID: strin
 export const getAlgeriaStates = async ({ payload }: { payload: { store_id: string } }) => {
 
    try {
-      const baseUrl = await getBaseApiURL()
+      const baseHeaders = await getBaseHeaders()
       const params = new URLSearchParams(payload).toString()
-      const res = await fetch(`${baseUrl}/storefront/select2/state/algeria?${params}`, {
+      const res = await fetch(`${BASE_API_URL}/storefront/select2/state/algeria?${params}`, {
          next: {
             revalidate: false
-         }
+         },
+         headers: baseHeaders
       });
 
       if (res.status === 200) {
@@ -71,12 +74,13 @@ export const getAlgeriaStates = async ({ payload }: { payload: { store_id: strin
 export const getAlgeriaCities = async ({ payload }: { payload: { store_id: string, state: string } }) => {
 
    try {
-      const baseUrl = await getBaseApiURL()
+      const baseHeaders = await getBaseHeaders()
       const params = new URLSearchParams(payload).toString()
-      const res = await fetch(`${baseUrl}/storefront/select2/city/algeria?${params}`, {
+      const res = await fetch(`${BASE_API_URL}/storefront/select2/city/algeria?${params}`, {
          next: {
             revalidate: false
-         }
+         },
+         headers: baseHeaders
       });
 
       if (res.status === 200) {

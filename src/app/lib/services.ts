@@ -1,10 +1,13 @@
-import { getBaseApiURL } from "./base-path";
+import { BASE_API_URL, getBaseHeaders } from "./base-path";
 
 export const getProduct = async ({ slug }: { slug: string }) => {
 
    try {
-      const baseUrl = await getBaseApiURL()
-      const res = await fetch(`${baseUrl}/storefront/product/${slug}`, { next: { revalidate: 0 } });
+      const baseHeaders = await getBaseHeaders()
+      const res = await fetch(`${BASE_API_URL}/storefront/product/${slug}`, {
+         next: { revalidate: 0 },
+         headers: baseHeaders
+      });
 
       if (res.status === 200) {
          const json = await res.json();
@@ -21,8 +24,11 @@ export const getProduct = async ({ slug }: { slug: string }) => {
 export const getDescription = async ({ productID }: { productID: string }) => {
 
    try {
-      const baseUrl = await getBaseApiURL()
-      const res = await fetch(`${baseUrl}/storefront/product/${productID}/description`, { next: { revalidate: 0 } });
+      const baseHeaders = await getBaseHeaders()
+      const res = await fetch(`${BASE_API_URL}/storefront/product/${productID}/description`, {
+         next: { revalidate: 0 },
+         headers: baseHeaders
+      });
       const content = await res.text();
 
       return content
@@ -35,13 +41,14 @@ export const getDescription = async ({ productID }: { productID: string }) => {
 export const postCheckout = async (params: { payload: any, productID: string }) => {
 
    try {
-      const baseUrl = await getBaseApiURL()
-      const post = await fetch(`${baseUrl}/storefront/product/${params.productID}/checkout`, {
+      const baseHeaders = await getBaseHeaders()
+      const post = await fetch(`${BASE_API_URL}/storefront/product/${params.productID}/checkout`, {
          next: { revalidate: 0 },
          method: 'POST',
          headers: {
             'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            ...baseHeaders
          },
          body: JSON.stringify(params.payload)
       });
@@ -60,8 +67,11 @@ export const postCheckout = async (params: { payload: any, productID: string }) 
 export const getStore = async () => {
 
    try {
-      const baseUrl = await getBaseApiURL()
-      const res = await fetch(`${baseUrl}/storefront/my-store`, { next: { revalidate: 120 } });
+      const baseHeaders = await getBaseHeaders()
+      const res = await fetch(`${BASE_API_URL}/storefront/my-store`, {
+         next: { revalidate: 120 },
+         headers: baseHeaders
+      });
 
       if (res.status === 200) {
          const json = await res.json();
@@ -87,9 +97,12 @@ export const getStore = async () => {
 export const getProducts = async ({ params }: { params: { page: string } }) => {
 
    try {
-      const baseUrl = await getBaseApiURL()
+      const baseHeaders = await getBaseHeaders()
       const createParams = new URLSearchParams(params).toString()
-      const res = await fetch(`${baseUrl}/storefront/product?${createParams}`, { next: { revalidate: 0 } });
+      const res = await fetch(`${BASE_API_URL}/storefront/product?${createParams}`, {
+         next: { revalidate: 0 },
+         headers: baseHeaders
+      });
 
       if (res.status === 200) {
          const json = await res.json();
@@ -106,8 +119,11 @@ export const getProducts = async ({ params }: { params: { page: string } }) => {
 export const getPageData = async ({ type }: { type: 'term' | 'privacy' | 'return' }) => {
 
    try {
-      const baseUrl = await getBaseApiURL()
-      const res = await fetch(`${baseUrl}/storefront/page/${type}`, { next: { revalidate: 60 } });
+      const baseHeaders = await getBaseHeaders()
+      const res = await fetch(`${BASE_API_URL}/storefront/page/${type}`, {
+         next: { revalidate: 60 },
+         headers: baseHeaders
+      });
 
       if (res.status === 200) {
          const json = await res.json();
