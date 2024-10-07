@@ -6,7 +6,6 @@ export const BASE_API_URL = 'https://api.dropelio.xyz/api/v1';
 
 
 export async function getBaseHeaders() {
-   // let host = 'https://test.dropelio.xyz'
    let store_domain = ''
    
    if (typeof window === 'undefined') {
