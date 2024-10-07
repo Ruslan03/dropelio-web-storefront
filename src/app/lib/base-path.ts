@@ -11,7 +11,8 @@ export async function getBaseHeaders() {
    
    if (typeof window === 'undefined') {
       const nextHeaders = await import('next/headers')
-      store_domain = nextHeaders.headers().get('host') as string
+      const host = nextHeaders.headers().get('host') as string
+      store_domain = host.replace('www.', '')
    } else {
       store_domain = window.location.host.replace('www.', '')
    }
