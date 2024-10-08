@@ -160,9 +160,37 @@ const CheckoutForm = (props: ICheckoutForm) => {
          <h2 className='font-bold text-xl'>{t('Title')}</h2>
          <div className='flex flex-col mt-3'>
             <form className='flex w-full flex-col gap-3' onSubmit={handleSubmit}>
-               <InputField name='name' type='text' value={payload.name} required placeholder={t('Name')} onChange={handleInputChange} />
-               <InputField name='whatsapp' type='text' value={payload.whatsapp} required placeholder={t('PhoneNumber')} onChange={handleInputChange} />
-               <InputField avail={af('email')} name='email' type='email' value={payload?.email || ''} placeholder={t('Email')} onChange={handleInputChange} />
+               <InputField
+                  required
+                  name='name'
+                  type='text'
+                  value={payload.name}
+                  placeholder={t('Name')}
+                  onChange={handleInputChange}
+               />
+               
+               <InputField
+                  required
+                  name='whatsapp'
+                  type='text'
+                  value={payload.whatsapp} 
+                  placeholder={t('PhoneNumber')}
+                  onChange={(e) => {
+                     const numberRegex = /^[0-9]*$/;
+                     if(numberRegex.test(e.target.value)) {
+                        handleInputChange(e)
+                     }
+                  }}
+               />
+
+               <InputField
+                  avail={af('email')}
+                  name='email'
+                  type='email'
+                  value={payload?.email || ''}
+                  placeholder={t('Email')}
+                  onChange={handleInputChange}
+               />
 
                {/* <InputField avail={af('qty')} name='qty' type='number' value={payload.qty} required placeholder={t('Quantity')} onChange={handleInputChange} /> */}
 
