@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props) {
          'og:url': product.product_url,
          'og:type': 'product',
          'product:price.amount': product?.product_price || 0,
-         'product:price.currency': product?.product_currency || ''
+         'product:price.currency': product?.store?.currency || ''
       }
    }
 }
@@ -74,7 +74,6 @@ const Page = async ({ params }: Props) => {
       store,
       title,
       sold,
-      product_currency,
       product_price,
       product_price_formatted,
       compare_at_price_formatted,
@@ -98,7 +97,7 @@ const Page = async ({ params }: Props) => {
             <div className='flex flex-col items-start gap-2'>
                <h1 className='text-2xl md:text-3xl font-semibold'>{title}</h1>
 
-               <Price currency={product_currency} price={product_price_formatted} compare={compare_at_price_formatted} />
+               <Price currency={store?.currency} price={product_price_formatted} compare={compare_at_price_formatted} />
 
                <div className='mt-3 flex items-center gap-2'>
                   <BadgeRating sold={sold} rating={rating} />
@@ -117,7 +116,7 @@ const Page = async ({ params }: Props) => {
                      productID={id}
                      productPrice={product_price}
                      inputFields={inputFields}
-                     currency={product_currency}
+                     currency={store?.currency}
                      qtyOffers={product_qty_offers || []}
                   />
                </Suspense>
