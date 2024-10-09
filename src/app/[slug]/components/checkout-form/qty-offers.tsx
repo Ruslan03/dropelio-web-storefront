@@ -39,7 +39,7 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
 
                const offerStringify = JSON.stringify(offer)
 
-               const isSelected = offerStringify === selected
+               const isSelected = offerStringify == selected
 
                const {
                   totalDiscount,
