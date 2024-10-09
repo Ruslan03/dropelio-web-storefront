@@ -39,7 +39,7 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
 
                const offerStringify = JSON.stringify(offer)
 
-               const isSelected = offerStringify == selected
+               const isSelected = offerStringify === selected
 
                const {
                   totalDiscount,
@@ -49,7 +49,7 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
                } = calculateDiscount(offer, price)
 
                return (
-                  <div key={i} className={`ltr:flex gap-3 items-center relative bg-white p-3 border rounded-md ${isSelected && 'bg-blue-100 border-blue-400'}`}>
+                  <div key={i} className={`ltr:flex gap-3 items-center relative p-3 border rounded-md ${isSelected ? 'bg-blue-100 border-blue-400': 'bg-white'}`}>
                      <RadioGroupItem id={`offer-${i}`} aria-label={`offer-${i}`} value={offerStringify} />
                      <label
                         htmlFor={`offer-${i}`}
