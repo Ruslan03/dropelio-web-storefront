@@ -37,6 +37,10 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
          <RadioGroup value={selected} onValueChange={handleOnChange} className='flex flex-col gap-4'>
             {offers.map((offer, i) => {
 
+               const offerStringify = JSON.stringify(offer)
+
+               const isSelected = offerStringify === selected
+
                const {
                   totalDiscount,
                   totalBfDiscount,
@@ -45,8 +49,8 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
                } = calculateDiscount(offer, price)
 
                return (
-                  <div key={i} className="ltr:flex gap-3 items-center relative bg-white p-3 border rounded-md">
-                     <RadioGroupItem id={`offer-${i}`} aria-label={`offer-${i}`} value={JSON.stringify(offer)} />
+                  <div key={i} className={`ltr:flex gap-3 items-center relative bg-white p-3 border rounded-md ${isSelected && 'bg-blue-100 border-blue-400'}`}>
+                     <RadioGroupItem id={`offer-${i}`} aria-label={`offer-${i}`} value={offerStringify} />
                      <label
                         htmlFor={`offer-${i}`}
                         className="text-sm flex-grow cursor-pointer "

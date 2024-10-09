@@ -11,10 +11,10 @@ const Page = async () => {
    return (
       <BaseContainer>
          <h1 className="font-bold text-3xl md:text-4xl text-black mb-8 max-xl:text-center">{store?.name}</h1>
-         
+
          <Suspense fallback={<LoadingPlaceholder />}>
             <div className='min-h-96'>
-            <ProductList />
+               <ProductList />
             </div>
          </Suspense>
 

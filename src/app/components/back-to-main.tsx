@@ -7,7 +7,7 @@ const BackToMainPage = () => {
    const t = useTranslations('General')
    return (
       <div className='my-4'>
-         <Link href={'/'} className='flex items-center gap-2 font-semibold'><ArrowLeft size={18} />{t('BackToMainPage')}</Link>
+         <Link href={'/'} className='flex items-center gap-2'><ArrowLeft size={18} />{t('BackToMainPage')}</Link>
       </div>
    )
 }

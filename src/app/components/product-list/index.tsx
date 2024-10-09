@@ -54,7 +54,9 @@ const ProductList = () => {
          )}
 
          <div className='my-8'>
-            <ProductPagination currentPage={page} totalPage={Math.ceil(total / 6)} onPageChange={(newPage) => setPage(newPage)} />
+            {Boolean(products?.length) && total > 6 && (
+               <ProductPagination currentPage={page} totalPage={Math.ceil(total / 6)} onPageChange={(newPage) => setPage(newPage)} />
+            )}
          </div>
       </div>
    )
@@ -73,7 +75,7 @@ const ProductItem = ({ product }: { product: any }) => {
                src={storage(product?.product_images?.[0]?.image_path)}
                alt={product?.title}
                fill
-               sizes='100vw'
+               sizes='100%'
                priority
                onLoad={() => setIsLoadingImage(false)}
                style={{
