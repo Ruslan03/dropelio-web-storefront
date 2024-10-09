@@ -47,16 +47,16 @@
          "SearchCityPlaceholder": "Search Province/City...",
          "NoShippingAddress": "No shipping address",
          "Algeria": {
-            "SelectStateLabel": "Province",
             "SelectStatePlaceholder": "Select Province...",
-            "CityLabel": "City"
+            "SelectCityPlaceholder": "City"
          }
       },
       "Footer": {
          "DeliveryCityLabel": "Delivery City",
          "ShippingCostLabel": "Shipping Cost",
          "CTASave": "Apply"
-      }
+      },
+      "GetCostErrorMessage": "Failed to get shipping cost"
    },
    "OrderSummary": {
       "Title": "Order Summary",

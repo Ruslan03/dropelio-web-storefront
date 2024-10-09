@@ -47,16 +47,16 @@
          "SearchCityPlaceholder": "Cari kota/kabupaten...",
          "NoShippingAddress": "Tidak ada alamat pengiriman",
          "Algeria": {
-            "SelectStateLabel": "State (Wilaya)",
-            "SelectStatePlaceholder": "Pilih state...",
-            "CityLabel": "City (Commune)"
+            "SelectStatePlaceholder": "Pilih state (wilaya)...",
+            "SelectCityPlaceholder": "Pilih city (commune)..."
          }
       },
       "Footer": {
          "DeliveryCityLabel": "Kota Pengiriman",
          "ShippingCostLabel": "Ongkos Pengiriman",
          "CTASave": "Terapkan"
-      }
+      },
+      "GetCostErrorMessage": "Gagal mendapatkan ongkos pengiriman"
    },
    "OrderSummary": {
       "Title": "Ringkasan Order",

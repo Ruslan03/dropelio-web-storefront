@@ -47,16 +47,16 @@
          "SearchCityPlaceholder": "أختر الولاية و البلدية",
          "NoShippingAddress": "معلومات التوصيل غير متوفرة",
          "Algeria": {
-            "SelectStateLabel": "الولاية - Wilaya",
             "SelectStatePlaceholder": "إختر الولاية - Wilaya",
-            "CityLabel": "البلدية - Commune"
+            "SelectCityPlaceholder": "البلدية - Commune"
          }
       },
       "Footer": {
          "DeliveryCityLabel": "التوصيل إلى",
          "ShippingCostLabel": "سعر التوصيل",
          "CTASave": "أدخل المعلومات"
-      }
+      },
+      "GetCostErrorMessage": "Failed to get shipping cost"
    },
    "OrderSummary": {
       "Title": "ملخص الطلبية",

@@ -41,9 +41,9 @@ export const getShippingCost = async ({ productID, payload }: { productID: strin
          return json?.payload || null
       }
 
-      return []
+      throw 'Internal server error'
    } catch (err) {
-      return null
+      throw err
    }
 }
 

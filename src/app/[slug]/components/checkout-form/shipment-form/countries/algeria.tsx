@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import {
    Select,
    SelectContent,
@@ -7,15 +8,10 @@ import {
    SelectValue,
 } from "@/components/ui/select"
 
-import { getAlgeriaCities, getAlgeriaStates, getShippingCities, getShippingCost } from '@/services/shipping'
-import { ShipmentFormContext } from '..'
-import CitySelector from '../city-selector'
-import { useTranslations } from 'next-intl'
+import { getAlgeriaCities, getAlgeriaStates } from '@/services/shipping'
+import { IShipmentForm, ShipmentFormContext } from '..'
 
-
-
-
-const Algeria = () => {
+const Algeria = ({ onApply }: { onApply: IShipmentForm['onApply'] }) => {
    const t = useTranslations('ShipmentForm.Body.Algeria')
    const context = useContext(ShipmentFormContext)
 
@@ -25,30 +21,46 @@ const Algeria = () => {
    const [selectedState, setSelectedState] = useState<any>(null)
    const [selectedCity, setSelectedCity] = useState<any>(null)
    const [cities, setCities] = useState([])
+   const [isLoadingState, setIsLoadingState] = useState(false)
    const [isLoading, setIsLoading] = useState(false)
+
+   const isDisabledCity = isLoading || !Boolean(cities?.length)
+
+   const handleSelectState = (state: any) => {
+      setSelectedState(state)
+      fetchCities(state?.city_name)
+
+      let shipment = JSON.parse(JSON.stringify(context[0]))
+      shipment = {
+         ...shipment,
+         city: {
+            id: null,
+            name: null
+         },
+         cost: null
+      }
+      onApply(shipment)
+   }
 
    const handleSelectCity = async (city: any) => {
       setSelectedCity(city)
-      context[1]((prevState) => ({
-         ...prevState,
+      const cost = Number(selectedState?.shipping_cost) || 0
+      let shipment = JSON.parse(JSON.stringify(context[0]))
+      shipment = {
+         ...shipment,
          city: {
             id: selectedState?.id || null,
             name: city?.city_name ? `${city?.city_state}-${city?.city_name}` : null
          },
-         isLoadingCost: true
-      }))
-
-      const cost = Number(selectedState?.shipping_cost) || 0
-
-      context[1]((prevState) => ({
-         ...prevState,
+         cost,
          isLoadingCost: false,
-         cost
-      }))
-
+      }
+      context[1](shipment)
+      onApply(shipment)
    }
 
    const fetchStates = useCallback(async () => {
+      setIsLoadingState(true)
       const resStates = await getAlgeriaStates({
          payload: {
             store_id: storeID as string
@@ -56,6 +68,7 @@ const Algeria = () => {
       })
 
       setStates(resStates || [])
+      setIsLoadingState(false)
    }, [storeID])
 
    const fetchCities = useCallback(async (state: string) => {
@@ -76,32 +89,22 @@ const Algeria = () => {
    }, [fetchStates])
 
    return (
-      <div>
-         <p className='font-semibold text-sm mb-1'>{t('SelectStateLabel')}</p>
-         <Select onValueChange={(v) => {
+      <div className='flex flex-col gap-3'>
+         <Select disabled={isLoadingState} onValueChange={(v) => {
             try {
                const state = JSON.parse(v)
-               setSelectedState(state)
-               fetchCities(state?.city_name)
-
-               context[1]((prevState) => ({
-                  ...prevState,
-                  city: {
-                     id: null,
-                     name: null
-                  },
-                  cost: null
-               }))
+               handleSelectState(state)
             } catch (error) {
                console.error(error)
             }
          }}>
-            <SelectTrigger className="w-full">
+            <SelectTrigger className={`w-full h-12 bg-white text-base ${!selectedState && 'text-gray-500'}`}>
                <SelectValue placeholder={t('SelectStatePlaceholder')} />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className='max-h-72'>
                {states.map((state: any) => (
                   <SelectItem
+                     className='text-base'
                      key={state?.id}
                      value={JSON.stringify(state)}
                   >
@@ -111,13 +114,29 @@ const Algeria = () => {
             </SelectContent>
          </Select>
 
-         <p className='font-semibold text-sm my-1 mt-3'>{t('CityLabel')}</p>
-         <CitySelector
-            isLoading={isLoading}
-            cities={cities}
-            value={selectedCity?.id}
-            onChange={(city) => handleSelectCity(city)}
-         />
+         <Select disabled={isDisabledCity} onValueChange={(v) => {
+            try {
+               const city = JSON.parse(v)
+               handleSelectCity(city)
+            } catch (error) {
+               console.error(error)
+            }
+         }}>
+            <SelectTrigger className={`w-full h-12 bg-white text-base ${!selectedCity && 'text-gray-500'}`}>
+               <SelectValue placeholder={t('SelectCityPlaceholder')} />
+            </SelectTrigger>
+            <SelectContent className='max-h-72'>
+               {cities.map((state: any) => (
+                  <SelectItem
+                     className='text-base'
+                     key={state?.id}
+                     value={JSON.stringify(state)}
+                  >
+                     {state?.city_name}
+                  </SelectItem>
+               ))}
+            </SelectContent>
+         </Select>
       </div>
    )
 }

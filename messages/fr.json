@@ -47,16 +47,16 @@
          "SearchCityPlaceholder": "Rechercher ville/commune...",
          "NoShippingAddress": "Aucune adresse de livraison",
          "Algeria": {
-            "SelectStateLabel": "ville (Wilaya)",
             "SelectStatePlaceholder": "Sélectionnez ville",
-            "CityLabel": "Commune"
+            "SelectCityPlaceholder": "Commune"
          }
       },
       "Footer": {
          "DeliveryCityLabel": "Ville de livraison",
          "ShippingCostLabel": "Coût de livraison",
          "CTASave": "Appliquer"
-      }
+      },
+      "GetCostErrorMessage": "Failed to get shipping cost"
    },
    "OrderSummary": {
       "Title": "Détails de la commande",

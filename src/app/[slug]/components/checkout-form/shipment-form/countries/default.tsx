@@ -1,72 +1,84 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
-import { Input } from '@/components/ui/input'
-import useDebounce from '@/app/lib/client/hooks/use-debounce'
+import {
+   Select,
+   SelectContent,
+   SelectItem,
+   SelectTrigger,
+   SelectValue,
+} from "@/components/ui/select"
+
 import { getShippingCities } from '@/services/shipping'
-import { ShipmentFormContext } from '..'
-import CitySelector from '../city-selector'
+import { IShipmentForm, ShipmentFormContext } from '..'
 import { useTranslations } from 'next-intl'
 
 
-const Default = ({ country }: { country: string }) => {
-   const t = useTranslations('ShipmentForm.Body')
+const Default = ({ country, onApply }: { country: string, onApply: IShipmentForm['onApply'] }) => {
+   const t = useTranslations('ShipmentForm')
    const context = useContext(ShipmentFormContext)
-   const cityID = context[0].city.id
 
    const { storeID } = context[0]
 
-   const [keyword, setKeyword] = useState('')
+   const [selectedCity, setSelectedCity] = useState<any>(null)
    const [cities, setCities] = useState([])
    const [isLoading, setIsLoading] = useState(false)
-   const debouncedKeyword = useDebounce(keyword, 400);
 
    const handleSelectCity = async (city: any) => {
-      context[1]((prevState) => ({
-         ...prevState,
+      setSelectedCity(city)
+      const cost = Number(city?.shipping_cost) || 0
+      let shipment = JSON.parse(JSON.stringify(context[0]))
+      shipment = {
+         ...shipment,
          city: {
             id: city?.id || null,
             name: city?.city_name || null
          },
-         isLoadingCost: true
-      }))
-
-      const cost = Number(city?.shipping_cost) || 0
-
-      context[1]((prevState) => ({
-         ...prevState,
-         isLoadingCost: false,
-         cost
-      }))
-
+         cost,
+         isLoadingCost: false
+      }
+      context[1](shipment)
+      onApply(shipment)
    }
 
    const fetchCities = useCallback(() => {
       setIsLoading(true)
       getShippingCities({
          payload: {
-            q: debouncedKeyword,
             country: country.toUpperCase(),
             store_id: storeID
          }
       })
-      .then((resCities) => setCities(resCities))
-      .finally(() => setIsLoading(false))
-   }, [debouncedKeyword, storeID, country])
+         .then((resCities) => setCities(resCities))
+         .finally(() => setIsLoading(false))
+   }, [storeID, country])
 
    useEffect(() => {
       fetchCities()
-   }, [debouncedKeyword, fetchCities])
+   }, [fetchCities])
 
    return (
-      <div>
-         <Input className='h-9 mb-3 text-sm' placeholder={t('SearchCityPlaceholder')} onChange={(e) => setKeyword(e.target.value)} />
-
-         <CitySelector
-            isLoading={isLoading}
-            cities={cities}
-            value={cityID}
-            onChange={(city) => handleSelectCity(city)}
-         />
-      </div>
+      <Select disabled={isLoading} onValueChange={(v) => {
+         try {
+            const city = JSON.parse(v)
+            handleSelectCity(city)
+         } catch (error) {
+            console.error(error)
+         }
+      }}>
+         <SelectTrigger className={`w-full h-12 bg-white text-base ${!selectedCity && 'text-gray-500'}`}>
+            <SelectValue placeholder={t('Placeholder')} />
+         </SelectTrigger>
+         <SelectContent className='max-h-72'>
+            {cities.map((state: any) => (
+               <SelectItem
+                  className='text-base'
+                  key={state?.id}
+                  value={JSON.stringify(state)}
+               >
+                  {state?.city_name}
+               </SelectItem>
+            ))}
+         </SelectContent>
+      </Select>
    )
 }
 
