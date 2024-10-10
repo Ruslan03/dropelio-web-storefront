@@ -87,7 +87,11 @@ export const getAlgeriaCities = async ({ payload }: { payload: { store_id: strin
          const json = await res.json();
 
          if (json) {
-            return json.map((city: any) => ({ ...city, city_name: city?.commune_name_ascii, city_state: city?.wilaya_name_ascii }))
+            return json.map((city: any) => ({
+               ...city,
+               city_name: city?.commune_name_ascii,
+               city_state: city?.wilaya_name_asci
+            }))
          }
          return []
       }

@@ -108,7 +108,7 @@ const Algeria = ({ onApply }: { onApply: IShipmentForm['onApply'] }) => {
                      key={state?.id}
                      value={JSON.stringify(state)}
                   >
-                     {state?.city_name}
+                     {`${state?.postal_code} - ${state?.city_name}`}
                   </SelectItem>
                ))}
             </SelectContent>
@@ -132,7 +132,7 @@ const Algeria = ({ onApply }: { onApply: IShipmentForm['onApply'] }) => {
                      key={state?.id}
                      value={JSON.stringify(state)}
                   >
-                     {state?.city_name}
+                     {`${state?.city_name} - ${state?.commune_name}`}
                   </SelectItem>
                ))}
             </SelectContent>
