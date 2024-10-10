@@ -49,16 +49,16 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
                } = calculateDiscount(offer, price)
 
                return (
-                  <div key={i} className={`ltr:flex gap-3 items-center relative p-3 border rounded-md ${isSelected ? 'bg-blue-100 border-blue-400': 'bg-white'}`}>
+                  <div key={i} className={`ltr:flex rtl:flex-row-reverse gap-3 items-center relative p-3 border rounded-md ${isSelected ? 'bg-blue-100 border-blue-400' : 'bg-white'}`}>
                      <RadioGroupItem id={`offer-${i}`} aria-label={`offer-${i}`} value={offerStringify} />
                      <label
                         htmlFor={`offer-${i}`}
-                        className="text-sm flex-grow cursor-pointer "
+                        className="text-sm flex-grow cursor-pointer ltr:text-left rtl:text-right "
                      >
                         <div className='flex flex-col '>
                            <p className='mb-1'>{offer?.title}</p>
                            <div>
-                              <div className='flex gap-1 items-center'>
+                              <div className='flex gap-1 items-center ltr:justify-start rtl:justify-end'>
 
                                  <p className='font-semibold'>{currencyFormat(totalAfDiscount, currency)}</p>
                                  {isShowCompare && (
@@ -69,8 +69,10 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
                         </div>
                      </label>
                      {isShowCompare && (
-                        <div className={`flex items-center gap-2 text-xs shadow-md ${i === 0 ? 'bg-gray-400' : 'bg-blue-600'} text-white font-semibold py-1 px-3 rounded-md absolute top-0 right-2 -translate-y-1/2`}>
-                           <p>{t('Discount')}: {currencyFormat(totalDiscount, currency)}</p>
+                        <div className='px-2 absolute top-0 left-0 right-0 flex ltr:justify-end rtl:justify-start'>
+                           <div className={`flex items-center gap-2 text-xs shadow-md ${i === 0 ? 'bg-gray-400' : 'bg-blue-600'} text-white font-semibold py-1 px-3 rounded-md -translate-y-1/2`}>
+                              <p>{t('Discount')}: {currencyFormat(totalDiscount, currency)}</p>
+                           </div>
                         </div>
                      )}
                   </div>
