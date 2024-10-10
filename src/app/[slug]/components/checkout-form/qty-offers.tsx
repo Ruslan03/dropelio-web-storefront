@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { Checkbox } from "@/components/ui/checkbox"
+import React, { useState } from 'react'
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { currencyFormat } from '@/app/lib/client/currency-format'
 import { useTranslations } from 'next-intl'

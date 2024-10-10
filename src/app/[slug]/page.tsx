@@ -134,10 +134,10 @@ const Page = async ({ params }: Props) => {
 
             {product_reviews?.length > 0 && (<Review reviews={product_reviews} />)}
 
-            {isShowCoForm && <StaticButtonCheckout />}
+            {/* {isShowCoForm && <StaticButtonCheckout />} */}
          </div>
 
-         {!isShowCoForm && <FloatingButtonCheckout slug={slug} coMode={co_mode} coLink={co_link} />}
+         <FloatingButtonCheckout slug={slug} coMode={co_mode} coLink={isShowCoForm ? '#checkout-form': co_link} />
 
          <BaseFooter />
 
