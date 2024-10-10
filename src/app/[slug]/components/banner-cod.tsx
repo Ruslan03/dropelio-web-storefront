@@ -11,6 +11,9 @@ const BannerCOD = () => {
             alt='banner-cod'
             width={86}
             height={26}
+            style={{
+               width: 'auto'
+            }}
          />
          <p className='font-semibold text-base italic'>COD ({t('CashOnDelivery')})</p>
       </div>
