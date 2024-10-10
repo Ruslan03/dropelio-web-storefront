@@ -51,7 +51,7 @@ export default async function RootLayout({
    const messages = await getMessages();
 
    return (
-      <html lang={locale} dir={dir}>
+      <html lang={locale} dir={dir} className='scroll-smooth'>
          <body className={locale === 'ar' ? cairo.className : ''}>
             <NextIntlClientProvider messages={messages}>
                {children}

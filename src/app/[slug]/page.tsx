@@ -27,6 +27,10 @@ const Description = dynamic(() => import('./components/description'), {
    loading: () => <LoadingSkeleton />
 })
 
+const StaticButtonCheckout = dynamic(() => import('./components/static-button-checkout'), {
+   ssr: false,
+})
+
 interface Props {
    params: {
       slug: string
@@ -129,6 +133,8 @@ const Page = async ({ params }: Props) => {
             <Description productID={id} />
 
             {product_reviews?.length > 0 && (<Review reviews={product_reviews} />)}
+
+            {isShowCoForm && <StaticButtonCheckout />}
          </div>
 
          {!isShowCoForm && <FloatingButtonCheckout slug={slug} coMode={co_mode} coLink={co_link} />}
