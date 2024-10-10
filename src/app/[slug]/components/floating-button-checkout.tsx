@@ -14,7 +14,7 @@ const FloatingButtonCheckout = ({ slug, coMode, coLink }: IFloatingButtonCheckou
 
    const t = useTranslations('ProductReview');
 
-   const [isVisible, setIsVisible] = useState(true);
+   const [isVisible, setIsVisible] = useState(false);
 
    useEffect(() => {
 
