@@ -27,10 +27,6 @@ const Description = dynamic(() => import('./components/description'), {
    loading: () => <LoadingSkeleton />
 })
 
-const StaticButtonCheckout = dynamic(() => import('./components/static-button-checkout'), {
-   ssr: false,
-})
-
 interface Props {
    params: {
       slug: string
