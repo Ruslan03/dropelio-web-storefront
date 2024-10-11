@@ -37,6 +37,8 @@ const FloatingButtonCheckout = ({ slug, coMode, coLink }: IFloatingButtonCheckou
                const isVisible = rect.bottom <= 0
 
                setIsVisible(isVisible);
+            }else {
+               setIsVisible(true)
             }
          }
 
