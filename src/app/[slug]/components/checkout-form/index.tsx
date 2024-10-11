@@ -157,7 +157,7 @@ const CheckoutForm = (props: ICheckoutForm) => {
    useEffect(() => {
       setTimeout(() => {
          trackPageViewEvent(pixelID)
-      }, 3000)
+      }, 5000)
    }, [pixelID])
 
    return (
