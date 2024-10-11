@@ -7,7 +7,6 @@ import ImageSlider from './components/image-slider'
 import Price from './components/price'
 import BannerCOD from './components/banner-cod'
 import Features from './components/features'
-import FloatingButtonCheckout from './components/floating-button-checkout'
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { LoadingSkeleton } from './components/description'
@@ -25,6 +24,10 @@ const Review = dynamic(() => import('./components/review'), {
 const Description = dynamic(() => import('./components/description'), {
    ssr: false,
    loading: () => <LoadingSkeleton />
+})
+
+const FloatingButtonCheckout = dynamic(() => import('./components/floating-button-checkout'), {
+   ssr: false,
 })
 
 interface Props {
