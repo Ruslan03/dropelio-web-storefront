@@ -2,7 +2,6 @@ import React, { Suspense } from 'react'
 import BaseContainer from '@/app/components/container'
 import BaseFooter from '@/app/components/footer'
 import { getProduct } from '@/app/lib/services'
-import BadgeRating from './components/badge-rating'
 import ImageSlider from './components/image-slider'
 import Price from './components/price'
 import BannerCOD from './components/banner-cod'
@@ -27,6 +26,10 @@ const Description = dynamic(() => import('./components/description'), {
 })
 
 const FloatingButtonCheckout = dynamic(() => import('./components/floating-button-checkout'), {
+   ssr: false,
+})
+
+const BadgeRating = dynamic(() => import('./components/badge-rating'), {
    ssr: false,
 })
 

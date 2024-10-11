@@ -113,7 +113,6 @@ const CheckoutForm = (props: ICheckoutForm) => {
          payload,
          productID
       }).then(async () => {
-         const { qty, price } = summary
          const pixelPayload = {
             name: payload?.name,
             phone: payload?.whatsapp,
@@ -206,8 +205,6 @@ const CheckoutForm = (props: ICheckoutForm) => {
                   placeholder={t('Email')}
                   onChange={handleInputChange}
                />
-
-               {/* <InputField avail={af('qty')} name='qty' type='number' value={payload.qty} required placeholder={t('Quantity')} onChange={handleInputChange} /> */}
 
                {isShowQtySelector && (
                   <QtySelector onValueChange={(qty) => setPayload((prevPayload) => ({ ...prevPayload, qty: Number(qty) || 1 }))} />
