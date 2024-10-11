@@ -1,17 +1,32 @@
 'use client';
 
 import React, { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
+import dynamic from 'next/dynamic';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { postCheckout } from '@/app/lib/services';
-import { BadgePercent, CircleCheckBig, LoaderCircle } from 'lucide-react';
+import { CircleCheckBig, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import ShipmentForm, { ShipmentType } from './shipment-form';
-import OrderSummary, { TypeSummary } from './order-summary';
-import QtySelector from './qty-selector';
+import { ShipmentType } from './shipment-form';
+import { TypeSummary } from './order-summary';
 import { useToast } from '@/hooks/use-toast';
 import { trackPageViewEvent, trackPurchaseEvent } from '@/app/lib/client/tracking';
-import QtyOffers from './qty-offers';
+
+const QtyOffers = dynamic(() => import('./qty-offers'), {
+   ssr: false,
+})
+
+const QtySelector = dynamic(() => import('./qty-selector'), {
+   ssr: false,
+})
+
+const OrderSummary = dynamic(() => import('./order-summary'), {
+   ssr: false,
+})
+
+const ShipmentForm = dynamic(() => import('./shipment-form'), {
+   ssr: false,
+})
 
 type Payload = {
    name: string
