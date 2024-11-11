@@ -54,10 +54,10 @@ export default async function RootLayout({
    return (
       <html lang={locale} dir={dir} className='scroll-smooth'>
 
-         {process.env.NODE_ENV === 'development' && (
+         {process.env.NODE_ENV === 'production' && (
             <Script src='/inspectlet.js' />
          )}
-         
+
          <body className={locale === 'ar' ? cairo.className : ''}>
             <NextIntlClientProvider messages={messages}>
                {children}
