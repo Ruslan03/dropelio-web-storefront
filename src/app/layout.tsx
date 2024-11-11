@@ -7,6 +7,7 @@ import { getStore } from "./lib/services";
 import { Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import { Toaster } from '@/components/ui/toaster';
+import Script from 'next/script';
 
 
 const cairo = Cairo({
@@ -52,6 +53,9 @@ export default async function RootLayout({
 
    return (
       <html lang={locale} dir={dir} className='scroll-smooth'>
+
+         <Script src='/inspectlet.js' />
+
          <body className={locale === 'ar' ? cairo.className : ''}>
             <NextIntlClientProvider messages={messages}>
                {children}
