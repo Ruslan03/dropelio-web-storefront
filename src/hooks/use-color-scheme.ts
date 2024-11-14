@@ -21,10 +21,10 @@ const DEFAULT: ColorScheme = {
 
 const RELEASIT: ColorScheme = {
    primary: {
-      '100': '#FDDDDD',
-      '400': '#FF6265',
-      '500': '#B11012',
-      '600': '#E51111',
+      '100': '#FDEFDD',
+      '400': '#EDAE53',
+      '500': '#f7941d',
+      '600': '#f7941d',
    },
 }
 
