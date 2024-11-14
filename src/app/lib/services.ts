@@ -69,7 +69,7 @@ export const getStore = async () => {
    try {
       const baseHeaders = await getBaseHeaders()
       const res = await fetch(`${BASE_API_URL}/storefront/my-store`, {
-         next: { revalidate: 120 },
+         next: { revalidate: 0 },
          headers: baseHeaders
       });
 
@@ -81,7 +81,8 @@ export const getStore = async () => {
             language_code: payload?.language_code || null,
             direction: payload?.direction || null,
             name: payload?.name || null,
-            api_base_url: payload?.api_base_url || null
+            api_base_url: payload?.api_base_url || null,
+            theme: payload?.theme || 'default'
          }
 
          return store

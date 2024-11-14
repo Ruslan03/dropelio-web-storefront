@@ -97,6 +97,8 @@ const Page = async ({ params }: Props) => {
    const isShowCoForm = co_mode === 'internal' && store?.co_on_preview == 1
    const inputFields = co_form?.split(',')
 
+   const isShowImageSlider = store?.theme !== 'releasit'
+
    return (
       <BaseContainer>
          <div className='flex flex-col gap-8 mb-8'>
@@ -110,8 +112,8 @@ const Page = async ({ params }: Props) => {
                   <BadgeStore storeName={store?.name} />
                </div>
             </div>
-
-            <ImageSlider images={product_images} />
+            
+            {isShowImageSlider && <ImageSlider images={product_images} />}
 
             {isShowCoForm && (
                <Suspense fallback={null}>

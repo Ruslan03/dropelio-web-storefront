@@ -1,14 +1,16 @@
+import Script from 'next/script';
 import { Cairo } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 
-import "./globals.css";
+import useColorScheme from '@/hooks/use-color-scheme';
+
 import { getStore } from "./lib/services";
 import { Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import { Toaster } from '@/components/ui/toaster';
-import Script from 'next/script';
 
+import "./globals.css";
 
 const cairo = Cairo({
    weight: ['400', '700'],
@@ -51,6 +53,15 @@ export default async function RootLayout({
    const locale = await getLocale();
    const messages = await getMessages();
 
+   const colors = useColorScheme(store?.theme)
+
+   const styles: any = {
+      '--primary-600': colors.primary[600],
+      '--primary-500': colors.primary[500],
+      '--primary-400': colors.primary[400],
+      '--primary-100': colors.primary[100]
+   }
+
    return (
       <html lang={locale} dir={dir} className='scroll-smooth'>
 
@@ -58,7 +69,7 @@ export default async function RootLayout({
             <Script src='/inspectlet.js' />
          )}
 
-         <body className={locale === 'ar' ? cairo.className : ''}>
+         <body style={styles} className={`${locale === 'ar' ? cairo.className : ''}`}>
             <NextIntlClientProvider messages={messages}>
                {children}
                <Toaster />

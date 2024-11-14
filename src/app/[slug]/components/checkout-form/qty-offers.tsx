@@ -48,8 +48,8 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
                } = calculateDiscount(offer, price)
 
                return (
-                  <div key={i} className={`ltr:flex rtl:flex-row-reverse gap-3 items-center relative p-3 border rounded-md ${isSelected ? 'bg-blue-100 border-blue-400' : 'bg-white'}`}>
-                     <RadioGroupItem id={`offer-${i}`} aria-label={`offer-${i}`} value={offerStringify} />
+                  <div key={i} className={`ltr:flex rtl:flex-row-reverse gap-3 items-center relative p-3 border rounded-md ${isSelected ? 'bg-[--primary-100] border-[--primary-400]' : 'bg-white'}`}>
+                     <RadioGroupItem className='border-[--primary-600] text-[--primary-600]' id={`offer-${i}`} aria-label={`offer-${i}`} value={offerStringify} />
                      <label
                         htmlFor={`offer-${i}`}
                         className="text-sm flex-grow cursor-pointer ltr:text-left rtl:text-right "
@@ -69,7 +69,7 @@ const QtyOffers = ({ offers, price, currency, onSelectDiscount }: { offers: any[
                      </label>
                      {isShowCompare && (
                         <div className='px-2 absolute top-0 left-0 right-0 flex ltr:justify-end rtl:justify-start'>
-                           <div className={`flex items-center gap-2 text-xs shadow-md ${i === 0 ? 'bg-gray-400' : 'bg-blue-600'} text-white font-semibold py-1 px-3 rounded-md -translate-y-1/2`}>
+                           <div className={`flex items-center gap-2 text-xs shadow-md ${i === 0 ? 'bg-gray-400' : 'bg-[--primary-600]'} text-white font-semibold py-1 px-3 rounded-md -translate-y-1/2`}>
                               <p>{t('Discount')}: {currencyFormat(totalDiscount, currency)}</p>
                            </div>
                         </div>

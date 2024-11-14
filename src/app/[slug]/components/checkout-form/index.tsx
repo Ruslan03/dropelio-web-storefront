@@ -165,9 +165,9 @@ const CheckoutForm = (props: ICheckoutForm) => {
 
          {isShowSuccess && (
             <div className='p-3 absolute z-50 left-0 w-full top-0 h-full bg-opacity-90 gap-3 bg-white flex flex-col items-center justify-center'>
-               <CircleCheckBig className='text-blue-600 w-16 h-14 md:w-14 md:h-16' />
+               <CircleCheckBig className='text-[--primary-600] w-16 h-14 md:w-14 md:h-16' />
                <p className='font-semibold text-base md:text-xl text-center'>{t('SuccessMessage')}</p>
-               <button onClick={() => setIsShowSuccess(false)} className='active:opacity-75 transition-all ease-in-out duration-75 px-3 py-2 mt-4 bg-gradient-to-t from-blue-600  to-blue-500 text-white rounded-md text-sm md:text-base'>{t('ButtonContinueShopping')}</button>
+               <button onClick={() => setIsShowSuccess(false)} className='active:opacity-75 transition-all ease-in-out duration-75 px-3 py-2 mt-4 bg-gradient-to-t from-[--primary-500]  to-[--primary-600] text-white rounded-md text-sm md:text-base'>{t('ButtonContinueShopping')}</button>
             </div>
          )}
 
@@ -270,7 +270,7 @@ const CheckoutForm = (props: ICheckoutForm) => {
 
                <OrderSummary summary={summary} currency={currency} />
 
-               <button type='submit' disabled={isLoading} className={`${isShowSuccess ? 'bg-gray-300' : 'bg-gradient-to-t from-blue-600  to-blue-500'} active:opacity-75 transition-all ease-in-out duration-75 text-white text-center flex justify-center disabled:from-blue-500 disabled:to-blue-400 shadow-sm w-full mt-2 text-base font-bold p-3 rounded-md`}>
+               <button type='submit' disabled={isLoading} className={`${isShowSuccess ? 'bg-gray-300' : 'bg-gradient-to-t to-[--primary-600]  from-[--primary-500]'} active:opacity-75 transition-all ease-in-out duration-75 text-white text-center flex justify-center disabled:from-[--primary-500] disabled:to-[--primary-600] shadow-sm w-full mt-2 text-base font-bold p-3 rounded-md`}>
                   {!isLoading ? t('ButtonSubmit') : <LoaderCircle className='animate-spin' strokeWidth={3} />}
                </button>
             </form>
