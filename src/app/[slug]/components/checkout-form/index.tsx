@@ -186,7 +186,11 @@ const CheckoutForm = (props: ICheckoutForm) => {
                <InputField
                   required
                   name='whatsapp'
-                  type='text'
+                  type='number'
+                  // @ts-ignore
+                  pattern="[0-9]*"
+                  // @ts-ignore
+                  inputmode="numeric"
                   value={payload.whatsapp} 
                   placeholder={t('PhoneNumber')}
                   onChange={(e) => {
