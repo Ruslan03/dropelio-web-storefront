@@ -70,7 +70,9 @@ const Page = async ({ params }: Props) => {
       product_features,
       checkout_form: co_form,
       meta_pixel_id,
-      product_qty_offers
+      product_qty_offers,
+      colors,
+      sizes
    } = product
 
 
@@ -102,6 +104,8 @@ const Page = async ({ params }: Props) => {
                productPrice={product_price}
                currency={store?.currency}
                qtyOffers={product_qty_offers || []}
+               colors={colors || []}
+               sizes={sizes || []}
             />
          </div>
          <BaseFooter />

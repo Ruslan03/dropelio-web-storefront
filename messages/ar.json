@@ -26,6 +26,11 @@
          "Title": "عرض خاص ومميز",
          "Discount": "تخفيض"
       },
+      "Variant": {
+         "Title": "Variant",
+         "SelectColorPlaceholder": "Select color",
+         "SelectSizePlaceholder": "Select size"
+      },
       "ErrorMessage": {
          "InvalidOrder": {
             "Title": "الطلبات المزيفة والطلبات المتكررة لا يتم قبولها",

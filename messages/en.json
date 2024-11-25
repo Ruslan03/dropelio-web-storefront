@@ -26,6 +26,11 @@
          "Title": "Special Offer",
          "Discount": "Discount"
       },
+      "Variant": {
+         "Title": "Variant",
+         "SelectColorPlaceholder": "Select color",
+         "SelectSizePlaceholder": "Select size"
+      },
       "ErrorMessage": {
          "InvalidOrder": {
             "Title": "Invalid order detected",

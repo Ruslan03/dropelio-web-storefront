@@ -26,6 +26,11 @@
          "Title": "Penawaran Spesial",
          "Discount": "Diskon"
       },
+      "Variant": {
+         "Title": "Variant",
+         "SelectColorPlaceholder": "Pilih warna",
+         "SelectSizePlaceholder": "Pilih ukuran"
+      },
       "ErrorMessage": {
          "InvalidOrder": {
             "Title": "Pesanan tidak valid terdeteksi",

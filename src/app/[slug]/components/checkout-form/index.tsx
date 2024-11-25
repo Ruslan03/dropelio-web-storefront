@@ -11,6 +11,7 @@ import { ShipmentType } from './shipment-form';
 import { TypeSummary } from './order-summary';
 import { useToast } from '@/hooks/use-toast';
 import { trackPageViewEvent, trackPurchaseEvent } from '@/app/lib/client/tracking';
+import SelectVariant from './variant';
 
 const QtyOffers = dynamic(() => import('./qty-offers'), {
    ssr: false,
@@ -38,6 +39,8 @@ type Payload = {
    address?: string
    email?: string
    note?: string
+   color?: string
+   size?: string
 }
 
 interface ICheckoutForm {
@@ -47,8 +50,10 @@ interface ICheckoutForm {
    productPrice: number
    storeID: string
    currency: string
-   pixelID?: string,
+   pixelID?: string
    qtyOffers?: any[]
+   colors: string[]
+   sizes: string[]
 }
 
 const CheckoutForm = (props: ICheckoutForm) => {
@@ -60,8 +65,11 @@ const CheckoutForm = (props: ICheckoutForm) => {
       country,
       currency,
       productPrice,
-      qtyOffers
+      qtyOffers,
+      colors,
+      sizes
    } = props
+   
    const t = useTranslations('CheckoutForm')
    const { toast } = useToast()
    const [isShowSuccess, setIsShowSuccess] = useState(false)
@@ -154,6 +162,8 @@ const CheckoutForm = (props: ICheckoutForm) => {
    const isShowQtySelector = af('qty') && !isShowQtyOffers
    const isShowOffer = isShowQtyOffers
 
+   const isShowVariant = Boolean(colors?.length) || Boolean(sizes?.length)
+
    useEffect(() => {
       setTimeout(() => {
          trackPageViewEvent(pixelID)
@@ -182,7 +192,7 @@ const CheckoutForm = (props: ICheckoutForm) => {
                   placeholder={t('Name')}
                   onChange={handleInputChange}
                />
-               
+
                <InputField
                   required
                   name='whatsapp'
@@ -190,12 +200,12 @@ const CheckoutForm = (props: ICheckoutForm) => {
                   // @ts-ignore
                   pattern="[0-9]*"
                   // @ts-ignore
-                  inputmode="numeric"
-                  value={payload.whatsapp} 
+                  inputMode="numeric"
+                  value={payload.whatsapp}
                   placeholder={t('PhoneNumber')}
                   onChange={(e) => {
                      const numberRegex = /^[0-9]*$/;
-                     if(numberRegex.test(e.target.value)) {
+                     if (numberRegex.test(e.target.value)) {
                         handleInputChange(e)
                      }
                   }}
@@ -242,6 +252,22 @@ const CheckoutForm = (props: ICheckoutForm) => {
                      onChange={handleInputChange}
                      value={payload?.note || ''}
                   />
+               )}
+
+               {isShowVariant && (
+                  <>
+                     <hr className='my-1 w-full mx-auto' />
+                     <div className='flex gap-1'>
+                        <h2 className='font-semibold text-[16px]'>{t('Variant.Title')}</h2>
+                     </div>
+
+                     <SelectVariant
+                        key={refreshKey}
+                        colors={colors}
+                        sizes={sizes}
+                        onChange={(valueVariant) => setPayload((prevPayload) => ({...prevPayload, ...valueVariant}))}
+                     />
+                  </>
                )}
 
                {isShowOffer && (
