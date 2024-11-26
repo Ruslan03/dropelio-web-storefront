@@ -28,8 +28,8 @@
       },
       "Variant": {
          "Title": "Variant",
-         "SelectColorPlaceholder": "Select color",
-         "SelectSizePlaceholder": "Select size"
+         "SelectColorPlaceholder": "اختر اللون",
+         "SelectSizePlaceholder": "اختر المقاس"
       },
       "ErrorMessage": {
          "InvalidOrder": {
