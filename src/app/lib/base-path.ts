@@ -1,8 +1,8 @@
 export const storage = (path: string) => {
-   return `https://dropelio.xyz/storage/${path}`
+   return `https://ordr.shop/storage/${path}`
 }
 
-export const BASE_API_URL = 'https://api.dropelio.xyz/api/v1';
+export const BASE_API_URL = 'https://api.ordr.shop/api/v1';
 
 
 export async function getBaseHeaders() {
@@ -17,7 +17,7 @@ export async function getBaseHeaders() {
    }
 
    if (process.env.NODE_ENV === 'development') {
-      store_domain = 'test.dropelio.xyz'
+      store_domain = 'atlas.ordr.shop'
    }
 
    return {
