@@ -1,12 +1,32 @@
 import { BASE_API_URL, getBaseHeaders } from "./base-path";
 
+
+async function fetchWithTimeout(resource: any, options : any = {}) {
+   const { timeout = 10000 } = options;
+ 
+   const controller = new AbortController();
+   const id = setTimeout(() => controller.abort(), timeout);
+ 
+   try {
+     const response = await fetch(resource, {
+       ...options,
+       signal: controller.signal,
+     });
+     clearTimeout(id);
+     return response;
+   } catch (error) {
+     clearTimeout(id);
+     throw error;
+   }
+ }
+
 export const getProduct = async ({ slug }: { slug: string }) => {
 
    try {
       const baseHeaders = await getBaseHeaders()
-      const res = await fetch(`${BASE_API_URL}/storefront/product/${slug}`, {
+      const res = await fetchWithTimeout(`${BASE_API_URL}/storefront/product/${slug}`, {
          next: { revalidate: 0 },
-         headers: baseHeaders
+         headers: baseHeaders,
       });
 
       if (res.status === 200) {
@@ -100,7 +120,7 @@ export const getProducts = async ({ params }: { params: { page: string } }) => {
    try {
       const baseHeaders = await getBaseHeaders()
       const createParams = new URLSearchParams(params).toString()
-      const res = await fetch(`${BASE_API_URL}/storefront/product?${createParams}`, {
+      const res = await fetchWithTimeout(`${BASE_API_URL}/storefront/product?${createParams}`, {
          next: { revalidate: 0 },
          headers: baseHeaders
       });

@@ -2,7 +2,7 @@ export const storage = (path: string) => {
    return `https://ordr.shop/storage/${path}`
 }
 
-export const BASE_API_URL = 'https://api.ordr.shop/api/v1';
+export const BASE_API_URL = 'https://ordr.shop/api/v1';
 
 
 export async function getBaseHeaders() {
