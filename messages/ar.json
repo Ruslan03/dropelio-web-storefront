@@ -11,7 +11,7 @@
       "CTAButtonCheckout": "أرسل طلبك الأن"
    },
    "CheckoutForm": {
-      "Title": "معلومات الطلب",
+      "Title": "للطلب المرجو إدخال معلوماتك ↡",
       "Name": "ادخل الاسم هنا...",
       "PhoneNumber": "ادخل رقم الهاتف...",
       "City": "اختر المدينة",
@@ -34,7 +34,7 @@
       "ErrorMessage": {
          "InvalidOrder": {
             "Title": "الطلبات المزيفة والطلبات المتكررة لا يتم قبولها",
-            "Description": "يرجى محاولة لاحقا أو تواصل مع الدعم الفني.ة"
+            "Description": "يرجى محاولة لاحقا أو تواصل مع الدعم الفني"
          },
          "InProgressOrder": {
             "Title": "طلبك قيد المعالجة من طرف المتجر",
@@ -71,7 +71,7 @@
       "Total": "المجموع"
    },
    "MobileOnly": {
-      "Title": "Hanya Bisa Diakses dari Mobile",
-      "Description": "Aplikasi ini dibuat khusus untuk perangkat mobile. Silakan buka dari smartphone atau tablet untuk pengalaman terbaik."
+      "Title": "لا يمكنك الوصول إلى هذه الصفحة حالياً",
+      "Description": "من أجل تجربة تسوق أفضل وحماية بياناتك، يرجى زيارة الصفحة لاحقاً أو استخدام هاتف أو جهاز آخر"
    }
 }
