@@ -2,6 +2,7 @@ import Script from 'next/script';
 import { Cairo } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
+import { headers } from 'next/headers';
 
 import useColorScheme from '@/hooks/use-color-scheme';
 
@@ -11,6 +12,7 @@ import { notFound } from 'next/navigation';
 import { Toaster } from '@/components/ui/toaster';
 
 import "./globals.css";
+import MobileOnly from './components/mobile-only';
 
 const cairo = Cairo({
    weight: ['400', '700'],
@@ -26,7 +28,6 @@ export async function generateMetadata() {
    if (!store) {
       notFound()
    }
-
 
    return {
       title: store.name,
@@ -48,6 +49,7 @@ export default async function RootLayout({
 
    const store = await getStore()
 
+
    const dir = store?.direction || 'ltr'
 
    const locale = await getLocale();
@@ -62,6 +64,12 @@ export default async function RootLayout({
       '--primary-100': colors.primary[100]
    }
 
+   const headersList = headers();
+   const userAgent = headersList.get('user-agent') || '';
+   const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent);
+   const isAllowDesktop = store?.allow_desktop
+   const isShowMobileOnly = !isAllowDesktop && !isMobile
+
    return (
       <html lang={locale} dir={dir} className='scroll-smooth'>
 
@@ -71,7 +79,7 @@ export default async function RootLayout({
 
          <body style={styles} className={`${locale === 'ar' ? cairo.className : ''}`}>
             <NextIntlClientProvider messages={messages}>
-               {children}
+               {isShowMobileOnly && <MobileOnly storeName={store?.name} /> || children}
                <Toaster />
             </NextIntlClientProvider>
          </body>

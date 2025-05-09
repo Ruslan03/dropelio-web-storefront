@@ -102,9 +102,10 @@ export const getStore = async () => {
             direction: payload?.direction || null,
             name: payload?.name || null,
             api_base_url: payload?.api_base_url || null,
-            theme: payload?.theme || 'default'
+            theme: payload?.theme || 'default',
+            allow_desktop: payload?.allow_desktop || false
          }
-
+         
          return store
       }
 

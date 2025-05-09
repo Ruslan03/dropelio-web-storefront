@@ -17,7 +17,7 @@ export async function getBaseHeaders() {
    }
 
    if (process.env.NODE_ENV === 'development') {
-      store_domain = 'atlas.ordr.shop'
+      store_domain = 'tokoku.ordr.shop'
    }
 
    return {

@@ -69,5 +69,9 @@
       "ShippingCost": "Shipping Cost",
       "Discount": "Discount",
       "Total": "Total"
+   },
+   "MobileOnly": {
+      "Title": "Hanya Bisa Diakses dari Mobile",
+      "Description": "Aplikasi ini dibuat khusus untuk perangkat mobile. Silakan buka dari smartphone atau tablet untuk pengalaman terbaik."
    }
 }
