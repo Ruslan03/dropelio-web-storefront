@@ -51,6 +51,7 @@ interface ICheckoutForm {
    storeID: string
    currency: string
    pixelID?: string
+   isEnableQtyOffers?: boolean
    qtyOffers?: any[]
    colors: string[]
    sizes: string[]
@@ -65,11 +66,12 @@ const CheckoutForm = (props: ICheckoutForm) => {
       country,
       currency,
       productPrice,
+      isEnableQtyOffers,
       qtyOffers,
       colors,
       sizes
    } = props
-   
+
    const t = useTranslations('CheckoutForm')
    const { toast } = useToast()
    const [isShowSuccess, setIsShowSuccess] = useState(false)
@@ -158,11 +160,13 @@ const CheckoutForm = (props: ICheckoutForm) => {
    }
 
    const af = (field: string) => inputFields.indexOf(field) > -1
-   const isShowQtyOffers = Boolean(qtyOffers?.length)
+   const isShowQtyOffers = Boolean(qtyOffers?.length) && isEnableQtyOffers
    const isShowQtySelector = af('qty') && !isShowQtyOffers
-   const isShowOffer = isShowQtyOffers
+   const isShowOffer = Boolean(isShowQtyOffers)
 
    const isShowVariant = Boolean(colors?.length) || Boolean(sizes?.length)
+
+   const shipmentValue = payload?.city_id && payload?.city_name ? `${payload.city_id}-${payload?.city_name}` : ''
 
    useEffect(() => {
       setTimeout(() => {
@@ -225,17 +229,21 @@ const CheckoutForm = (props: ICheckoutForm) => {
                )}
 
                {af('city') && (
-                  <ShipmentForm
-                     key={refreshKey}
-                     country={country}
-                     storeID={storeID}
-                     productID={productID}
-                     onApply={(shipment) => handleApplyShipment(shipment)}
-                  />
+                  <div className='relative'>
+                        <input required type='text' value={shipmentValue} className='opacity-0 absolute' />
+                     <ShipmentForm
+                        key={refreshKey}
+                        country={country}
+                        storeID={storeID}
+                        productID={productID}
+                        onApply={(shipment) => handleApplyShipment(shipment)}
+                     />
+                  </div>
                )}
 
                {af('address') && (
                   <Textarea
+                     required
                      name='address'
                      className='bg-white min-h-24'
                      placeholder={t('Address')}
@@ -265,7 +273,7 @@ const CheckoutForm = (props: ICheckoutForm) => {
                         key={refreshKey}
                         colors={colors}
                         sizes={sizes}
-                        onChange={(valueVariant) => setPayload((prevPayload) => ({...prevPayload, ...valueVariant}))}
+                        onChange={(valueVariant) => setPayload((prevPayload) => ({ ...prevPayload, ...valueVariant }))}
                      />
                   </>
                )}

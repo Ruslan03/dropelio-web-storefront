@@ -72,9 +72,9 @@ const Page = async ({ params }: Props) => {
       meta_pixel_id,
       product_qty_offers,
       colors,
-      sizes
+      sizes,
+      is_enable_qty_offers
    } = product
-
 
    const inputFields = co_form?.split(',')
 
@@ -103,6 +103,7 @@ const Page = async ({ params }: Props) => {
                inputFields={inputFields}
                productPrice={product_price}
                currency={store?.currency}
+               isEnableQtyOffers={is_enable_qty_offers}
                qtyOffers={product_qty_offers || []}
                colors={colors || []}
                sizes={sizes || []}
